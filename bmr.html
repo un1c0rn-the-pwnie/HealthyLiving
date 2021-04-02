@@ -1,0 +1,58 @@
+<html>
+<head></head>
+<body>
+     <h1>BMR Calculator</h1>
+     <form>
+        <fieldset>
+            <legend>BMR:</legend>
+            <label for="gender">Gender:</label><br>
+            <input type="radio" id="male" name="gender" value="0" required>
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="1" required>
+            <label for="female">Female</label><br><br>
+            <label for="agebmr">Age:</label><br>
+            <input type="number" id="agebmr" name="agebmr" placeholder="enter age" step=any required><br><br>
+            <label for="heightbmr">Height:</label><br>
+            <input type="number" id="heightbmr" name="heightbmr" placeholder="enter height in cm" step=any required><br><br>
+            <label for="weightbmr">Weight:</label><br>
+            <input type="number" id="weightbmr" name="weightbmr" placeholder="enter weight in kg" step=any required><br><br>
+            Activity: <select name="activity" id="activity">
+              <option value="1" selected>Basal Metabolic Rate (BMR)</option>
+              <option value="1.2" >Sedentary: little or no exercise</option>
+              <option value="1.375" >Light: exercise 1-3 times/week</option>
+              <option value="1.465" >Moderate: exercise 4-5 times/week</option>
+              <option value="1.55" >Active: daily exercise or intense exercise 3-4 times/week</option>
+              <option value="1.725" >Very Active: intense exercise 6-7 times/week</option>
+              <option value="1.9" >Extra Active: very intense exercise daily, or physical job</option>
+            </select><br><br>
+            <input type="button" value="calculate" onclick="BMRFunction()"> <br><br>
+            <p id="BMRresult"></p>
+        </fieldset>
+      </form> 
+      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque metus velit, ornare vitae lacus suscipit, accumsan aliquam diam. Donec sit amet suscipit massa, vel venenatis est. Vivamus eu nisi ac lectus feugiat condimentum ut ac lacus. Sed commodo nisl nec libero euismod, id fringilla ligula ultrices. Nunc ultrices tellus eu placerat aliquam. Sed sed quam dolor. Ut mollis sem quis nulla lacinia eleifend. Nunc eget ex hendrerit, aliquam nisl in, pellentesque lorem. Etiam fermentum congue diam, ut mollis libero faucibus vitae. Vivamus ac imperdiet nisi, sed finibus dui.
+
+Mauris id metus nec ante mattis tincidunt. Curabitur pretium, nisl ac interdum efficitur, justo arcu tempor purus, et dignissim nibh enim vel leo. Aenean a diam a ex facilisis mattis condimentum et tellus. Suspendisse ac eleifend massa. Nam arcu nunc, scelerisque ac cursus eget, porta eu diam. Cras sodales aliquam leo vitae dignissim. Integer viverra pellentesque arcu sed sollicitudin. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
+ 
+      <script>
+        function BMRFunction() {
+
+          //For men BMR = 10W + 6.25H - 5A + 5
+          //For women:BMR = 10W + 6.25H - 5A - 161
+          var g = document.querySelector('input[name="gender"]:checked').value;
+          //var act = document.querySelector('input[name="activity"]:checked').value;
+          var act = document.getElementById("activity").value;    
+          var a = document.getElementById("agebmr").value;
+          var h = document.getElementById("heightbmr").value;
+          var w = document.getElementById("weightbmr").value;
+          if(g == 0){
+            bmr = 10*w + 6.25*h - 5*a + 5
+          }
+          else{
+            bmr = 10*w + 6.25*h - 5*a - 161
+          }
+          bmr = bmr*act;
+          document.getElementById("BMRresult").innerHTML = bmr;
+        }
+        </script>
+</body>
+</html>

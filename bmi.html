@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <h1>The Calculators page</h1>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis, mauris et vulputate viverra, augue felis tempus felis, sit amet tempus purus augue ac mauris. 
+    <form>
+        <fieldset>
+            <legend>BMI:</legend>
+            <label for="heightbmi">height:</label><br>
+            <input type="number" id="heightbmi" name="heightbmi" placeholder="enter height in cm" step=any required><br><br>
+            <label for="weightbmi">weight:</label><br>
+            <input type="number" id="weightbmi" name="weightbmi" placeholder="enter weight in kg" step=any required><br><br>
+            <input type="button" value="calculate" onclick="BMIFunction()"> <br><br>
+            <p id="BMIresult"></p>
+        </fieldset>
+      </form> 
+      <p>Note: Please keep in mind that this BMI calculator is not meant to serve as a source
+           of clinical guidance and is not intended to be a substitute for professional medical
+            advice. Because BMI is based on weight and height, it is only an indicator of body
+            fatness. Individuals with the same BMI may have different amounts of body fat.
+            Persons may consider seeking advice from their healthcare providers on healthy
+            weight status.</p>
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque metus velit, ornare vitae lacus suscipit, accumsan aliquam diam. Donec sit amet suscipit massa, vel venenatis est. Vivamus eu nisi ac lectus feugiat condimentum ut ac lacus. Sed commodo nisl nec libero euismod, id fringilla ligula ultrices. Nunc ultrices tellus eu placerat aliquam. Sed sed quam dolor. Ut mollis sem quis nulla lacinia eleifend. Nunc eget ex hendrerit, aliquam nisl in, pellentesque lorem. Etiam fermentum congue diam, ut mollis libero faucibus vitae. Vivamus ac imperdiet nisi, sed finibus dui.
+
+Mauris id metus nec ante mattis tincidunt. Curabitur pretium, nisl ac interdum efficitur, justo arcu tempor purus, et dignissim nibh enim vel leo. Aenean a diam a ex facilisis mattis condimentum et tellus. Suspendisse ac eleifend massa. Nam arcu nunc, scelerisque ac cursus eget, porta eu diam. Cras sodales aliquam leo vitae dignissim. Integer viverra pellentesque arcu sed sollicitudin. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
+    
+      <script>
+        function BMIFunction() {
+          var h = document.getElementById("heightbmi").value;
+          var w = document.getElementById("weightbmi").value;
+          bmi = w/(h**2);
+          document.getElementById("BMIresult").innerHTML = bmi;
+        }
+        </script>
+
+</body>
+</html>

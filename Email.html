@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Contact Page">
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+
+    <link rel="stylesheet" href="css/Interaction.css">
+    <link rel="stylesheet" href="css/green-bootstrap.css">
+</head>
+
+<body>
+
+    <!-------------------------------------------- Header Menu -------------------------------------------------->
+    <header>
+        <nav>
+            <ul class="menu">
+                <li class="logo"><a href="HomePage.html">Healthy Living</a></li>
+                <li class="item"><a href="HomePage.html">Αρχική</a></li>
+                <li class="item"><a href="Sport.html">Άθληση</a></li>
+                <li class="item"><a href="Diet.html">Διατροφή</a></li>
+                <li class="item"><a href="Calculators.html">Χρήσιμες Μετρήσεις</a></li>
+                <li class="item button"><a href="Login.html">Log In</a></li>
+                <li class="item button secondary"><a href="Register.html">Sign Up</a></li>
+                <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <!------------------------------------------ End of Header Menu ---------------------------------------------------->
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-------------------------------------------- Main Body ---------------------------------------------------------->
+    <!-- Basic Form for sending email -->
+    <h3>Αποστολή E-mail</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-md-6">
+                <form id="sForm" action="/form.php"
+                    class="p-4 my-3 bg-white text-black text-center border needs-validation" novalidate
+                    style="border-radius:12px;">
+                    <div class="form-group">
+                        <input id="email" type="email" class="form-control" placeholder="Email" required>
+                        <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subj" name="subject" placeholder="Θέμα" class="form-control" required>
+                        <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Πληκτρολογήστε το μήνυμα σας..." rows="6"
+                            required></textarea>
+                        <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div><br /><br />
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-green btn-block">ΑΠΟΣΤΟΛΗ</button><br />
+                </form>
+            </div>
+            <div class="col-sm">
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- End of Basic Form for sending email -->
+
+    <!----------------------------------------- End of Main Body -------------------------------------------------->
+
+    <br>
+    <br>
+
+    <!------------------------------------------------ Footer ------------------------------------------------>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Στοιχεία Επικοινωνίας</h4>
+                    <ul>
+                        <li><a href="#">Τηλέφωνα: 2310789567, 6987311474</a></li>
+                        <li><a href="mailto:blahblah@gmail.com">Email: blahblah@gmail.com</a></li>
+                        <li><a href="Email.html">Αποστολή e-mail</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Μενού</h4>
+                    <ul>
+                        <li><a href="HomePage.html">Αρχική</a></li>
+                        <li><a href="Sport.html">Άθληση</a></li>
+                        <li><a href="Diet.html">Διατροφή</a></li>
+                        <li><a href="Calculators.html">Χρήσιμες Μετρήσεις</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Υπηρεσίες</h4>
+                    <ul>
+                        <li><a href="Register.html">Εγγραφείτε</a></li>
+                        <li><a href="Login.html">Συνδεθείτε</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ακολουθήστε μας</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/HealthyLivingAuTHGR" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/au_thgr" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <i id="To_Top" class="fas fa-chevron-up"></i>
+    </footer>
+    <!--------------------------------------------- End of Footer ---------------------------------------------->
+
+    <script src="JavaScript/form_check.js"></script>
+    <script src="JavaScript/all_pages.js"></script>
+</body>
+
+</html>

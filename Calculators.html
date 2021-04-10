@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Calculator Page">
+
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+
+    <link rel="stylesheet" href="css/BasicPages.css">
+    <link rel="stylesheet" href="css/green-bootstrap.css">
+</head>
+
+<body>
+
+    <!-------------------------------------------- Header Menu -------------------------------------------------->
+    <header>
+        <nav>
+            <ul class="menu">
+                <li class="logo"><a href="HomePage.html">Healthy Living</a></li>
+                <li class="item"><a href="HomePage.html">Αρχική</a></li>
+                <li class="item"><a href="Sport.html">Άθληση</a></li>
+                <li class="item"><a href="Diet.html">Διατροφή</a></li>
+                <li class="item"><a href="Calculators.html">Χρήσιμες Μετρήσεις</a></li>
+                <li class="item button"><a href="Login.html">Log In</a></li>
+                <li class="item button secondary"><a href="Register.html">Sign Up</a></li>
+                <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <!------------------------------------------ End of Header Menu ------------------------------------------------>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!--------------------------------------------- Main Body ---------------------------------------------------->
+
+    <!-- Basic form for BMI -->
+    <h3 class="text-center">Υπολόγισε τη φυσική σου κατάσταση!</h3>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <form id="bmiForm" class="p-4 my-3 bg-white text-black border needs-validation" action="javascript:BMIFunction();" novalidate style="border-radius:12px;">
+                <fieldset>
+                    <legend>BMI:</legend>
+                    <div class="form-group">
+                    <label for="heightbmi">Ύψος:</label><br>
+                    <input type="number" id="heightbmi" name="heightbmi" placeholder="Εισάγεται το ύψος σε εκατοστά" class="form-control" min="1" max="300" step=any required><br><br>
+                    <div class="invalid-feedback">Εισάγεται έναν αριθμό μεταξύ του 1 και του 300</div>
+                    </div>
+                    <div class="form-group">
+                    <label for="weightbmi">Βάρος:</label><br>
+                    <input type="number" id="weightbmi" name="weightbmi" placeholder="Εισάγεται το βάρος σε κιλά" class="form-control" min="1" max="500" step=any required><br><br>
+                    <div class="invalid-feedback">Εισάγεται έναν αριθμό μεταξύ του 1 και του 500</div>
+                    </div>
+                    <input type="submit" value="Υπολογισμός" class="btn btn-lg btn-green btn-block"> <br><br>
+                    <p id="BMIresult"></p>
+                </fieldset>
+            </form> 
+          </div>
+          <div class="col-md-6">
+            <br>
+              <p>Ο Δείκτης μάζας σώματος (ΔΜΣ) είναι μία γενική ιατρική ένδειξη για τον υπολογισμό του βαθμού παχυσαρκίας, 
+                που πηγάζει από το βάρος και το ύψος του ατόμου. Ο μαθηματικός του τύπος προέρχεται από βάρος διά του ύψους 
+                στο τετράγωνο (ΔΜΣ = βάρος(kg) / (ύψος)^2 (m^2)). Το ΔΜΣ μπορεί να κατηγοριοποιήσει ένα άτομο ως ελλιποβαρή, 
+                φυσιολογικού βάρους, υπέρβαρο ή παχύσαρκο (πρώτου, δεύτερου ή τρίτου βαθμού), τα οποία βασίζονται σε μετρήσεις 
+                ατόμων άνω των 20 ετών.</p>
+              <img src="images/CalculatorsPage/siora-photography-cixohzDpNIo-unsplash.jpg" class="img-fluid" alt="ruler">
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+    
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <form id="bmrForm" class="p-4 my-3 bg-white text-black border needs-validation" action="javascript:CaloriesFunction();" novalidate style="border-radius:12px;">
+                <fieldset>
+                  <legend>Καθημερινή καύση θερμίδων:</legend>
+                  <label for="gender">Φύλο:</label><br>
+                  <div class="form-check custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="male" name="gender" value="0" required>
+                    <label class="custom-control-label" for="male" >Άνδρας</label><br>
+                  </div>
+                  <div class="form-check custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="female" name="gender" value="1" required>
+                    <label class="custom-control-label" for="female" >Γυναίκα</label>
+                  </div>
+                  <br>
+                  <div class="form-group">   
+                    <label for="agebmr">Ηλικία:</label><br>
+                    <input type="number" id="agebmr" name="agebmr" placeholder="Εισάγεται την ηλικία" class="form-control" step=any min="1" max="200" required><br>
+                    <div class="invalid-feedback">Εισάγεται έναν αριθμό μεταξύ του 1 και του 200</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="heightbmr">Ύψος:</label><br>
+                    <input type="number" id="heightbmr" name="heightbmr" placeholder="Εισάγεται το ύψος σε εκατοστά" class="form-control" step=any min="1" max="300" required><br>
+                    <div class="invalid-feedback">Εισάγεται έναν αριθμό μεταξύ του 1 και του 300</div>
+                  </div>
+                  <div class="form-group">
+                  <label for="weightbmr">Βάρος:</label><br>
+                  <input type="number" id="weightbmr" name="weightbmr" placeholder="Εισάγεται το βάρος σε κιλά" class="form-control" min="1" max="500" step=any required><br>
+                  <div class="invalid-feedback">Εισάγεται έναν αριθμό μεταξύ του 1 και του 500</div>
+                  </div>
+                  <div class="form-group">
+                    Activity:<br> <select name="activity" id="activity" class="custom-select">
+                      <!--<option value="1" selected>Basal Metabolic Rate (BMR)</option>-->
+                      <option value="1.2" >Ανενεργός: λίγη ή καθόλου άσκηση</option>
+                      <option value="1.375" >Ελαφριά άσκηση: 1-3 ημέρες την εβδομάδα</option>
+                      <option value="1.55" > Μέτρια άσκηση: 6-7 ημέρες την εβδομάδα</option>
+                      <option value="1.725" >Δυνατή άσκηση: καθημερινά ή 2 φορές την ημέρα</option>
+                      <option value="1.9" >Σκληρή άσκηση: καθημερινά 2 ή περισσότερες φορές την ημέρα</option>
+                    </select><br><br>
+                  <div>
+                  <input type="submit" value="Υπολογισμός" class="btn btn-lg btn-green btn-block"> <br><br>
+                  <p id="Caloriesresult"></p>
+              </fieldset>
+            </form> 
+          </div>
+          <div class="col-md-6">
+            <br>
+            <p>Η καθημερινή καύση θερμίδων χαρακτηρίζεται από τον συνολικό αριθμό θερμίδων που καταναλώνει το σώμα κατά
+               την διάρκεια μιας μέρας, συμπεριλαμβανομένου των δραστηριοτήτων. Μπορεί να ποικίλει ευρέως, π.χ. ανάλογα
+                με τον μεταβολισμό του κάθε ατόμου, και είναι πολύ υψηλότερη στους αθλητές και σε εξαιρετικά ενεργά άτομα.
+                 Επιπλέον, η καθημερινή καύση θερμίδων υπολογίζεται από τον βασικό μεταβολικό ρυθμό (ΒΜΡ) του ατόμου  
+                 το οποίο πολλαπλασιάζεται με το επίπεδο δραστηριότητας. Το ΒΜΡ είναι ο συνολικός αριθμός θερμίδων που 
+                 χρειάζεται το σώμα για να λειτουργήσει σωστά, εξαιρουμένης της άσκησης και υπολογίζεται με 
+                 το ύψος, το βάρος, την ηλικία και το φύλο.</p>
+              <img src="images/CalculatorsPage/diet-695723_640.jpg" class="img-fluid" alt="measuring sandwich">
+          </div>
+        </div>
+      </div>
+      <p class="text-center"><b>Υποσημείωση:</b> Αυτές οι μετρήσεις είναι ένας οδηγός για να υπολογίσει κάποιος την φυσική του κατάσταση.
+         Συμβουλευτείτε έναν γιατρό για περισσότερες πληροφορίες.</p>
+
+    <!---------------------------------------- End of Main Body ---------------------------------------------------->
+
+    <br>
+
+    <!------------------------------------------- Footer ------------------------------------------------>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Στοιχεία Επικοινωνίας</h4>
+                    <ul>
+                        <li><a href="#">Τηλέφωνα: 2310789567, 6987311474</a></li>
+                        <li><a href="mailto:blahblah@gmail.com">Email: blahblah@gmail.com</a></li>
+                        <li><a href="Email.html">Αποστολή e-mail</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Μενού</h4>
+                    <ul>
+                        <li><a href="HomePage.html">Αρχική</a></li>
+                        <li><a href="Sport.html">Άθληση</a></li>
+                        <li><a href="Diet.html">Διατροφή</a></li>
+                        <li><a href="Calculators.html">Χρήσιμες Μετρήσεις</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Υπηρεσίες</h4>
+                    <ul>
+                        <li><a href="Register.html">Εγγραφείτε</a></li>
+                        <li><a href="Login.html">Συνδεθείτε</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ακολουθήστε μας</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/HealthyLivingAuTHGR" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/au_thgr" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <i id="To_Top" class="fas fa-chevron-up"></i>
+    </footer>
+    <!--------------------------------------------- End of Footer ---------------------------------------------->
+
+    <script src="JavaScript/Calculators.js"></script>
+    <script src="JavaScript/form_check.js"></script>
+    <script src="JavaScript/all_pages.js"></script>
+</body>
+
+</html>

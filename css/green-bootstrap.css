@@ -1,0 +1,90 @@
+/*
+Το συγκεκριμενο css ειναι προιον αυτοματισμου και παραχθηκε με το εργαλειο
+https://lingtalfi.com/bootstrap4-color-generator
+
+Χρησιμοποιηθηκε για να προσαρμοσουμε τα χρωματα των κουμπιων και φορμων στην ιστοσελιδα μας με το footer/menu.
+
+Τα πνευματικα δικαιωματα αναγνωριζονται στον Ling.
+Ωστοσο εχουν γινει καποιες manually τροποποιησεις καθως το εργαλειο δεν δημιουργουσε σωστα καποια πραγματα οποτε προσαρμωστικε στις αναγκες μας.
+*/
+
+
+/*------------------------------------
+- COLOR green
+------------------------------------*/
+
+.form-control:focus {
+	border-color: green;
+	box-shadow: 0 0 0 0.05rem green;
+} 
+
+.border-green {
+    border-color: #008000 !important;
+}
+
+.btn-green {
+    color: #fff;
+    background-color: #008000;
+    border-color: #008000;
+}
+
+.btn-green:hover {
+    color: #fff;
+    background-color: #005c00;
+    border-color: #008000;
+}
+
+.btn-green:focus, .btn-green.focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 128, 0, 0.5);
+}
+
+.btn-green.disabled, .btn-green:disabled {
+    color: #fff;
+    background-color: #008000;
+    border-color: #008000;
+}
+
+.btn-green:not(:disabled):not(.disabled):active, .btn-green:not(:disabled):not(.disabled).active, .show > .btn-green.dropdown-toggle {
+    color: #fff;
+    background-color: #008000;
+    border-color: #003d00;
+}
+
+.btn-green:not(:disabled):not(.disabled):active:focus, .btn-green:not(:disabled):not(.disabled).active:focus, .show > .btn-green.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 128, 0, 0.5);
+}
+
+.btn-outline-green {
+    color: #008000;
+    background-color: transparent;
+    border-color: #008000;
+}
+
+.btn-outline-green:hover {
+    color: #fff;
+    background-color: #008000;
+    border-color: #008000;
+}
+
+.btn-outline-green:focus, .btn-outline-green.focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 128, 0, 0.5);
+}
+
+.btn-outline-green.disabled, .btn-outline-green:disabled {
+    color: #008000;
+    background-color: transparent;
+}
+
+.btn-outline-green:not(:disabled):not(.disabled):active, .btn-outline-green:not(:disabled):not(.disabled).active, .show > .btn-outline-green.dropdown-toggle {
+    color: #fff;
+    background-color: #008000;
+    border-color: #008000;
+}
+
+.btn-outline-green:not(:disabled):not(.disabled):active:focus, .btn-outline-green:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-green.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 128, 0, 0.5);
+}
+
+.text-green {
+    color: #008000 !important;
+}

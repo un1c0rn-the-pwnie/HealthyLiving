@@ -88,3 +88,31 @@ https://lingtalfi.com/bootstrap4-color-generator
 .text-green {
     color: #008000 !important;
 }
+
+/*for the activity list*/
+.custom-select:focus {
+    border-color: green;
+	box-shadow: 0 0 0 0.05rem green;
+}
+/* for the gender buttons*/
+
+/* This is the checked state */
+.custom-radio .custom-control-input:checked~.custom-control-label::before,
+.custom-radio .custom-control-input:checked~.custom-control-label::after {
+    color: #fff;
+    background-color: #008000;
+    border-color: #008000;
+    border-radius: 50%;
+}
+
+/* active state i.e. displayed while the mouse is being pressed down */
+.custom-radio .custom-control-input:active ~ .custom-control-label::before {
+    color: #fff;
+    background-color: rgba(0, 128, 0, 0.5);
+}
+    
+/* the shadow; displayed while the element is in focus */
+.custom-radio .custom-control-input:focus ~ .custom-control-label::before {
+    color: #fff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 128, 0, 0.5);
+}

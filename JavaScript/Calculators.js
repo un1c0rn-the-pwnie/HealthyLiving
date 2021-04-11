@@ -1,17 +1,8 @@
+/*
+    Το BMI υπολογίζεται με τον παρακάτω τύπο : βάρος διά του ύψους στο τετράγωνο.
+    Μετά βλέπεις σύμφονα με την τιμή που βρήκες σε ποιά κατηγορία βρήσκεται το άτομο
+*/
 function BMIFunction() {
-
-    /*Below 18.5
-    Underweight
-    18.5–24.9
-    Normal weight
-    25.0–29.9
-    Pre-obesity
-    30.0–34.9
-    Obesity class I
-    35.0–39.9
-    Obesity class II
-    Above 40
-    Obesity class III*/
 
     var h = document.getElementById("heightbmi").value;
     var w = document.getElementById("weightbmi").value;
@@ -36,13 +27,17 @@ function BMIFunction() {
         status = 'παχύσαρκος βαθμού III'
     }
 
-    bmitext = 'Το bmi σου είναι ' + bmi + ' και βρίσκεσαι στην κατηγορία ' + status;
+    bmitext = 'Το bmi σου είναι ' + bmi.toFixed(1) + ' και βρίσκεσαι στην κατηγορία ' + status;
     document.getElementById("BMIresult").innerHTML = bmitext;
 }
+/*
+    Για τον υπολογισμό της Καθημερινής καύσης θερμίδων πρέπει αρχικά να υπολογιστεί το bmr:
+    Στους άντρες: BMR = 10W + 6.25H - 5A + 5
+    Στις γυναίκες: BMR = 10W + 6.25H - 5A - 161
+    αυτό πολλαπλασιάζεται με το επίπεδο δραστηριότητας για το τελικό αποτέλεσμα
+*/
 function CaloriesFunction() {
 
-    //For men BMR = 10W + 6.25H - 5A + 5
-    //For women:BMR = 10W + 6.25H - 5A - 161
     var g = document.querySelector('input[name="gender"]:checked').value;
     var act = document.getElementById("activity").value;
     var a = document.getElementById("agebmr").value;
@@ -55,6 +50,6 @@ function CaloriesFunction() {
         bmr = 10 * w + 6.25 * h - 5 * a - 161
     }
     calories = bmr * act;
-    caloriestext = 'Καις ' + calories + ' θερμίδες κάθε μέρα';
-    document.getElementById("BMRresult").innerHTML = caloriestext;
+    caloriestext = 'Καις ' + calories.toFixed(1) + ' θερμίδες κάθε μέρα';
+    document.getElementById("Caloriesresult").innerHTML = caloriestext;
 }

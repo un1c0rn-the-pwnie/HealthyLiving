@@ -43,6 +43,9 @@ nav{
 	color: green;
 	border-radius: 6px;
 }
+.menu li a:hover{
+	text-decoration: underline;
+}
 .menu li.subitem a {
 	padding: 15px;
 }

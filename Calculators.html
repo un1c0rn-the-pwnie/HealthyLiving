@@ -57,21 +57,23 @@
     <h3 class="text-center">Υπολόγισε τη φυσική σου κατάσταση!</h3>
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6" style=>
             <!-- Basic form for BMI , calculations done on BMIFunction() -->
-            <form id="bmiForm" class="p-4 my-3 bg-white text-black border needs-validation" action="javascript:BMIFunction();" novalidate style="border-radius:12px;">
+            <form id="bmiForm" class="p-4 my-3 bg-light text-black border needs-validation" action="javascript:BMIFunction();" novalidate style="border-radius:12px;">
                 <fieldset>
                     <legend>BMI:</legend>
                     <div class="form-group">
                     <label for="heightbmi">Ύψος:</label><br>
-                    <input type="number" id="heightbmi" name="heightbmi" placeholder="Εισάγεται το ύψος σε εκατοστά" class="form-control" min="1" max="300" step=any required><br><br>
+                    <input type="number" id="heightbmi" name="heightbmi" placeholder="Εισάγεται το ύψος σε εκατοστά" class="form-control" min="1" max="300" step=any required>
                     <div class="invalid-feedback">Εισάγεται έναν αριθμό μεταξύ του 1 και του 300</div>
                     </div>
+                    <br><br>
                     <div class="form-group">
                     <label for="weightbmi">Βάρος:</label><br>
-                    <input type="number" id="weightbmi" name="weightbmi" placeholder="Εισάγεται το βάρος σε κιλά" class="form-control" min="1" max="500" step=any required><br><br>
+                    <input type="number" id="weightbmi" name="weightbmi" placeholder="Εισάγεται το βάρος σε κιλά" class="form-control" min="1" max="500" step=any required>
                     <div class="invalid-feedback">Εισάγεται έναν αριθμό μεταξύ του 1 και του 500</div>
                     </div>
+                    <br><br>
                     <input type="submit" value="Υπολογισμός" class="btn btn-lg btn-green btn-block"> <br><br>
                     <p id="BMIresult"></p>
                 </fieldset>
@@ -97,7 +99,7 @@
         <div class="row">
           <div class="col-md-6">
             <!-- Basic form for daily calories burn, calculations done on CaloriesFunction() -->
-            <form id="CalcForm" class="p-4 my-3 bg-white text-black border needs-validation" action="javascript:CaloriesFunction();" novalidate style="border-radius:12px;">
+            <form id="CalcForm" class="p-4 my-3 bg-light text-black border needs-validation" action="javascript:CaloriesFunction();" novalidate style="border-radius:12px;">
                 <fieldset>
                   <legend>Καθημερινή καύση θερμίδων:</legend>
                   <label for="gender">Φύλο:</label><br>

@@ -27,7 +27,7 @@ function BMIFunction() {
         status = 'παχύσαρκος βαθμού III'
     }
 
-    bmitext = 'Το bmi σου είναι ' + bmi.toFixed(1) + ' και βρίσκεσαι στην κατηγορία ' + status;
+    bmitext = 'Το bmi σου είναι ' + bmi.toFixed(1).bold() + ' και βρίσκεσαι στην κατηγορία ' + status.bold();
     document.getElementById("BMIresult").innerHTML = bmitext;
 }
 /*
@@ -50,6 +50,6 @@ function CaloriesFunction() {
         bmr = 10 * w + 6.25 * h - 5 * a - 161
     }
     calories = bmr * act;
-    caloriestext = 'Καις ' + calories.toFixed(1) + ' θερμίδες κάθε μέρα';
+    caloriestext = 'Καις ' + calories.toFixed(1).bold() + ' θερμίδες κάθε μέρα';
     document.getElementById("Caloriesresult").innerHTML = caloriestext;
 }

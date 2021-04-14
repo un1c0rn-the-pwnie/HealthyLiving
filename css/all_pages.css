@@ -43,8 +43,14 @@ nav{
 	color: green;
 	border-radius: 6px;
 }
-.menu li a:hover{
+.menu li.logo a:hover{
+	text-decoration: none;
+}
+.menu li.item a:hover{
 	text-decoration: underline;
+}  
+.menu li.button a:hover{
+	text-decoration: none;
 }
 .menu li.subitem a {
 	padding: 15px;

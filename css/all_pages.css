@@ -141,6 +141,12 @@ nav{
 /* --------------------------------- End of Css for Header ---------------------------------- */
 
 
+/*
+Email/Forgot/Register pages footer fixes
+*/
+main {
+	min-height: calc(100vh - 580px);
+}
 
 
 /* ----------------------------------------- Css for Footer ----------------------------------- */

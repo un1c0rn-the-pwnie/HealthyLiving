@@ -51,35 +51,37 @@
 
     <!-------------------------------------------- Main Body ---------------------------------------------------------->
     <!-- Basic Form for sending email -->
-    <h3>Αποστολή E-mail</h3>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-            </div>
-            <div class="col-md-6">
-                <form id="sForm" action="/form.php"
-                    class="p-4 my-3 bg-white text-black text-center border needs-validation" novalidate
-                    style="border-radius:12px;">
-                    <div class="form-group">
-                        <input id="email" type="email" class="form-control" placeholder="Email" required>
-                        <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subj" name="subject" placeholder="Θέμα" class="form-control" required>
-                        <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" placeholder="Πληκτρολογήστε το μήνυμα σας..." rows="6"
-                            required></textarea>
-                        <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div><br /><br />
-                    </div>
-                    <button type="submit" class="btn btn-lg btn-green btn-block">ΑΠΟΣΤΟΛΗ</button><br />
-                </form>
-            </div>
-            <div class="col-sm">
+    <main>
+        <h3>Αποστολή E-mail</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                </div>
+                <div class="col-md-6">
+                    <form id="sForm" action="/form.php"
+                        class="p-4 my-3 bg-white text-black text-center border needs-validation" novalidate
+                        style="border-radius:12px;">
+                        <div class="form-group">
+                            <input id="email" type="email" class="form-control" placeholder="Email" required>
+                            <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subj" name="subject" placeholder="Θέμα" class="form-control" required>
+                            <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Πληκτρολογήστε το μήνυμα σας..." rows="6"
+                                required></textarea>
+                            <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div><br /><br />
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-green btn-block">ΑΠΟΣΤΟΛΗ</button><br />
+                    </form>
+                </div>
+                <div class="col-sm">
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
 
 

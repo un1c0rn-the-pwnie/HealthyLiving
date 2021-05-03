@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include '.classes/auth.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -25,20 +30,9 @@
 <body>
 
     <!-------------------------------------------- Header Menu -------------------------------------------------->
-    <header>
-        <nav>
-            <ul class="menu">
-                <li class="logo"><a href="HomePage.html">Healthy Living</a></li>
-                <li class="item"><a href="HomePage.html">Αρχική</a></li>
-                <li class="item"><a href="Sport.html">Άθληση</a></li>
-                <li class="item"><a href="Diet.html">Διατροφή</a></li>
-                <li class="item"><a href="Calculators.html">Μετρητές υγείας</a></li>
-                <li class="item button"><a href="Login.html">Log In</a></li>
-                <li class="item button secondary"><a href="Register.html">Sign Up</a></li>
-                <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php
+      include 'header.php';
+    ?>
     <!------------------------------------------ End of Header Menu ---------------------------------------------------->
 
     <br>
@@ -85,44 +79,9 @@
     <br>
 
     <!------------------------------------------------ Footer ------------------------------------------------>
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="footer-col">
-                    <h4>Στοιχεία Επικοινωνίας</h4>
-                    <ul>
-                        <li><a href="mailto:blahblah@gmail.com">Email: blahblah@gmail.com</a></li>
-                        <li><a href="Email.html">Αποστολή e-mail</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Μενού</h4>
-                    <ul>
-                        <li><a href="HomePage.html">Αρχική</a></li>
-                        <li><a href="Sport.html">Άθληση</a></li>
-                        <li><a href="Diet.html">Διατροφή</a></li>
-                        <li><a href="Calculators.html">Μετρητές υγείας</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Υπηρεσίες</h4>
-                    <ul>
-                        <li><a href="Register.html">Εγγραφείτε</a></li>
-                        <li><a href="Login.html">Συνδεθείτε</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Ακολουθήστε μας</h4>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/HealthyLivingAuTHGR" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://twitter.com/au_thgr" target="_blank"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <i id="To_Top" class="fas fa-chevron-up"></i>
-    </footer>
+    <?php
+        readfile('footer.html');
+    ?>
     <!--------------------------------------------- End of Footer ---------------------------------------------->
 
     <script src="JavaScript/form_check.js"></script>
@@ -130,3 +89,8 @@
 </body>
 
 </html>
+
+
+<?php
+    $conn->close(); // close database connection
+?>

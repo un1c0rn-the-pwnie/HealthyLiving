@@ -1,3 +1,48 @@
+<?php
+    session_start();
+    include '.classes/auth.php';
+?>
+
+<?php
+
+if(isset($_POST['submit'])){
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+      } else {
+        $email = test_input($_POST["email"]);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format"; 
+        }
+    }
+
+    if (empty($_POST["subject"])) {
+        $subjectErr = "subject is required";
+      } else {
+        $subject = test_input($_POST["subject"]);
+      }
+    
+    
+    if (empty($_POST["comment"])) {
+        $commentERR = "comment is required";
+    } else {
+        $comment = test_input($_POST["comment"]);
+    }
+}
+
+
+
+$ouremail = "geodimdim@csd.auth.gr";
+mail($ouremail, $subject, $comment, $email);
+echo $email . "\n" . $subject . "\n" . $comment . "\n";
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -24,20 +69,9 @@
 <body>
 
     <!-------------------------------------------- Header Menu -------------------------------------------------->
-    <header>
-        <nav>
-            <ul class="menu">
-                <li class="logo"><a href="HomePage.html">Healthy Living</a></li>
-                <li class="item"><a href="HomePage.html">Αρχική</a></li>
-                <li class="item"><a href="Sport.html">Άθληση</a></li>
-                <li class="item"><a href="Diet.html">Διατροφή</a></li>
-                <li class="item"><a href="Calculators.html">Μετρητές υγείας</a></li>
-                <li class="item button"><a href="Login.html">Log In</a></li>
-                <li class="item button secondary"><a href="Register.html">Sign Up</a></li>
-                <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php
+      include 'header.php';
+    ?>
     <!------------------------------------------ End of Header Menu ---------------------------------------------------->
 
     <br>
@@ -58,11 +92,11 @@
                 <div class="col-sm">
                 </div>
                 <div class="col-md-6">
-                    <form id="sForm" action="/form.php"
+                    <form id="sForm" action="Email.php"
                         class="p-4 my-3 bg-white text-black text-center border needs-validation" novalidate
-                        style="border-radius:12px;">
+                        style="border-radius:12px;" method="post">
                         <div class="form-group">
-                            <input id="email" type="email" class="form-control" placeholder="Email" required>
+                            <input id="email" type="email" class="form-control" placeholder="Email" name="email" required>
                             <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div>
                         </div>
                         <div class="form-group">
@@ -70,11 +104,11 @@
                             <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Πληκτρολογήστε το μήνυμα σας..." rows="6"
+                            <textarea class="form-control" placeholder="Πληκτρολογήστε το μήνυμα σας..." rows="6" name="comment"
                                 required></textarea>
                             <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div><br /><br />
                         </div>
-                        <button type="submit" class="btn btn-lg btn-green btn-block">ΑΠΟΣΤΟΛΗ</button><br />
+                        <button type="submit" name="submit" class="btn btn-lg btn-green btn-block">ΑΠΟΣΤΟΛΗ</button><br />
                     </form>
                 </div>
                 <div class="col-sm">
@@ -93,44 +127,9 @@
     <br>
 
     <!------------------------------------------------ Footer ------------------------------------------------>
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="footer-col">
-                    <h4>Στοιχεία Επικοινωνίας</h4>
-                    <ul>
-                        <li><a href="mailto:blahblah@gmail.com">Email: blahblah@gmail.com</a></li>
-                        <li><a href="Email.html">Αποστολή e-mail</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Μενού</h4>
-                    <ul>
-                        <li><a href="HomePage.html">Αρχική</a></li>
-                        <li><a href="Sport.html">Άθληση</a></li>
-                        <li><a href="Diet.html">Διατροφή</a></li>
-                        <li><a href="Calculators.html">Μετρητές υγείας</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Υπηρεσίες</h4>
-                    <ul>
-                        <li><a href="Register.html">Εγγραφείτε</a></li>
-                        <li><a href="Login.html">Συνδεθείτε</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Ακολουθήστε μας</h4>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/HealthyLivingAuTHGR" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://twitter.com/au_thgr" target="_blank"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <i id="To_Top" class="fas fa-chevron-up"></i>
-    </footer>
+    <?php
+        readfile('footer.html');
+    ?>
     <!--------------------------------------------- End of Footer ---------------------------------------------->
 
     <script src="JavaScript/form_check.js"></script>
@@ -138,3 +137,8 @@
 </body>
 
 </html>
+
+
+<?php
+    $conn->close(); // close database connection
+?>

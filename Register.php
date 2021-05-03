@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    include('.classes/accesscheck.php');
+
+    include('.classes/register.php');
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -26,20 +33,9 @@
 <body>
 
     <!-------------------------------------------- Header Menu -------------------------------------------------->
-    <header>
-        <nav>
-            <ul class="menu">
-                <li class="logo"><a href="HomePage.html">Healthy Living</a></li>
-                <li class="item"><a href="HomePage.html">Αρχική</a></li>
-                <li class="item"><a href="Sport.html">Άθληση</a></li>
-                <li class="item"><a href="Diet.html">Διατροφή</a></li>
-                <li class="item"><a href="Calculators.html">Μετρητές υγείας</a></li>
-                <li class="item button"><a href="Login.html">Log In</a></li>
-                <li class="item button secondary"><a href="Register.html">Sign Up</a></li>
-                <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php
+      include 'header.php';
+    ?>
     <!------------------------------------------ End of Header Menu ---------------------------------------------------->
 
     <br>
@@ -60,22 +56,22 @@
                 <div class="col-sm">
                 </div>
                 <div class="col-md-6">
-                    <form id="mForm" action="/register.php"
+                    <form id="mForm" action="Register.php" method="post"
                         class="p-4 my-3 bg-white text-black text-center border needs-validation" novalidate
                         style="border-radius:12px;">
                         <div class="form-group">
-                            <input id="username" type="text" class="form-control" placeholder="Όνομα χρήστη" required>
-                            <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div>
+                            <input id="username" type="text" pattern="[a-zA-Z0-9]{1,}" title="Το ονομα χρηστη πρεπει να μην περιεχει ειδικους χαρακτηρες μονο μικρα, κεφαλαια και αριθμοι επιτρεπονται" name="username" class="form-control" placeholder="Όνομα χρήστη" required>
+                            <div class="invalid-feedback">Το όνομα χρήστη πρέπει να μην περιέχει ειδικούς χαρακτήρες μόνο μικρά, κεφαλαία η αριθμούς.</div>
                         </div>
                         <div class="form-group">
-                            <input id="email" type="email" class="form-control" placeholder="Email" required>
+                            <input id="email" type="email" name="email" class="form-control" placeholder="Email" required>
                             <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div>
                         </div>
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 <input type="password" name="password" class="form-control"
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                    title="Ο κωδικός πρέπει να περιέχει τουλάχιστον έναν αριθμό, έναν κεφαλαίο χαρακτήρα, έναν μικρό χαρακτήρα, και να είναι 8 οι περισσότερα γράμματα μεγάλος."
                                     placeholder="Κωδικός πρόσβασης" id="pwd" required>
                                 <input type="password" name="confirmPassword" class="form-control"
                                     title="Must match password" placeholder="Επιβεβαίωση κωδικού" id="rpwd" required>
@@ -86,10 +82,13 @@
                                 <div id="pass-invalid-feedback" class="invalid-feedback">Οι κωδικοί πρόσβασης δεν
                                     ταιριάζουν.</div>
                             </div>
+                        <?php
+                            register_attempt_status();
+                        ?>
                         </div>
-                        <button type="submit" class="btn btn-lg btn-green btn-block">ΕΓΓΡΑΦΗ</button><br />
+                        <button type="submit" name="submit" value="submit" class="btn btn-lg btn-green btn-block">ΕΓΓΡΑΦΗ</button><br />
 
-                        <p>Έχεις ήδη λογαριασμό;<a class="text-green" href="Login.html"> Σύνδεση</a></p>
+                        <p>Έχεις ήδη λογαριασμό;<a class="text-green" href="Login.php"> Σύνδεση</a></p>
                     </form>
                 </div>
                 <div class="col-sm">
@@ -106,44 +105,9 @@
     <br>
 
     <!------------------------------------------------ Footer ------------------------------------------------>
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="footer-col">
-                    <h4>Στοιχεία Επικοινωνίας</h4>
-                    <ul>
-                        <li><a href="mailto:blahblah@gmail.com">Email: blahblah@gmail.com</a></li>
-                        <li><a href="Email.html">Αποστολή e-mail</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Μενού</h4>
-                    <ul>
-                        <li><a href="HomePage.html">Αρχική</a></li>
-                        <li><a href="Sport.html">Άθληση</a></li>
-                        <li><a href="Diet.html">Διατροφή</a></li>
-                        <li><a href="Calculators.html">Μετρητές υγείας</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Υπηρεσίες</h4>
-                    <ul>
-                        <li><a href="Register.html">Εγγραφείτε</a></li>
-                        <li><a href="Login.html">Συνδεθείτε</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Ακολουθήστε μας</h4>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/HealthyLivingAuTHGR" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://twitter.com/au_thgr" target="_blank"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <i id="To_Top" class="fas fa-chevron-up"></i>
-    </footer>
+    <?php
+        readfile('footer.html');
+    ?>
     <!--------------------------------------------- End of Footer ---------------------------------------------->
 
     <script src="JavaScript/Register.js"></script>
@@ -152,3 +116,7 @@
 </body>
 
 </html>
+
+<?php
+    $conn->close(); // close database connection
+?>

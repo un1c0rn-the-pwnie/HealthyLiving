@@ -22,6 +22,9 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
 
     <link rel="stylesheet" href="css/all_pages.css">
     <link rel="stylesheet" href="css/Interaction.css">
@@ -72,11 +75,22 @@
                         <?php
                             login_attempt_status();
                         ?>
+                        <?php
+                            display_captcha_status();
+                        ?>
                         <div class="form-group form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox" name="remember_me" value="remember_me"> Να με θυμάστε
                             </label>
                         </div>
+                        <div style="text-align: center;">
+                            <div
+                                class="g-recaptcha" 
+                                data-sitekey="6LfZoMUaAAAAAA_k25wLAT5nZkEhXMpdx2JPK835" 
+                                style="display: inline-block;"
+                            ></div>
+                        </div>
+                        <br/>
                         <button type="submit" name="submit" value="submit" class="btn btn-lg btn-green btn-block">ΣΥΝΔΕΣΗ</button>
 
                         <br />

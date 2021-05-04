@@ -104,6 +104,8 @@ function initialize_user_session($userid) {
     }
 
     $_SESSION['lgh'] = $login_hash;
+
+    header("Location: index.php");
 }
 
 ?>

@@ -30,7 +30,6 @@ if(isset($_SESSION['lgh'])) {
 
     $user = $row[1];
     $logged = true;
-    $conn->close();
 }
 
 ?>

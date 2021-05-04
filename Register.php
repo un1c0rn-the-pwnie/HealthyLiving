@@ -23,6 +23,8 @@
 
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
     <link rel="stylesheet" href="css/all_pages.css">
@@ -85,7 +87,18 @@
                         <?php
                             register_attempt_status();
                         ?>
+                        <?php
+                            display_captcha_status();
+                        ?>
                         </div>
+                        <div style="text-align: center;">
+                            <div
+                                class="g-recaptcha" 
+                                data-sitekey="6LfZoMUaAAAAAA_k25wLAT5nZkEhXMpdx2JPK835" 
+                                style="display: inline-block;"
+                            ></div>
+                        </div>
+                        <br/>
                         <button type="submit" name="submit" value="submit" class="btn btn-lg btn-green btn-block">ΕΓΓΡΑΦΗ</button><br />
 
                         <p>Έχεις ήδη λογαριασμό;<a class="text-green" href="Login.php"> Σύνδεση</a></p>

@@ -3,6 +3,7 @@
 require_once 'validate_functions.php';
 require_once 'db.php';
 require_once 'funcs.php';
+require_once 'captcha.php';
 
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
@@ -11,7 +12,7 @@ error_reporting(E_ALL);
 $login_attempt = false;
 $ret_error = "";
 
-if(isset($_POST['submit'])) {
+if(isset($_POST['submit']) && $captcha_status) {
     $username = $_POST['username'];
 
     if(empty($username)) {
@@ -75,7 +76,6 @@ function login($username, $password, $remember_me) {
     $userid = $row[0];
 
     initialize_user_session($userid);
-
 }
 
 function login_attempt_status() {
@@ -86,8 +86,6 @@ function login_attempt_status() {
             <div>
                 $ret_error
             </div> ";
-        } else {
-            header("Location: index.php");
         }
     }
 }

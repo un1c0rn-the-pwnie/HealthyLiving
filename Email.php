@@ -1,4 +1,8 @@
 <?php
+
+    session_start();
+    include '.classes/auth.php';
+
     include '.classes/captcha.php';
     include '.classes/email.php';
 ?>
@@ -112,3 +116,7 @@
 </body>
 
 </html>
+
+<?php
+    $conn->close(); // close database connection
+?>

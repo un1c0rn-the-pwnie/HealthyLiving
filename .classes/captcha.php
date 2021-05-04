@@ -1,6 +1,7 @@
 <?php
 
 $captcha_status = false;
+$capthca_error = "";
 
 if(isset($_POST['g-recaptcha-response'])) {
     if(empty($_POST['g-recaptcha-response'])) {

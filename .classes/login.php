@@ -13,16 +13,19 @@ $login_attempt = false;
 $ret_error = "";
 
 if(isset($_POST['submit']) && $captcha_status) {
+    $login_attempt = true;
     $username = $_POST['username'];
 
     if(empty($username)) {
-        die("Empty username");
+        $ret_error = "Δεν δόθηκε όνομα χρήστη.";
+        return;
     }
 
     $password = $_POST['password'];
 
     if(empty($password)) {
-        die("Empty password");
+        $ret_error = "Δεν δόθηκε κωδικός.";
+        return;
     }
 
     if(isset($_POST['remember_me'])) {
@@ -37,18 +40,18 @@ if(isset($_POST['submit']) && $captcha_status) {
     }
 
     if(!isValidUsername($username)) {
-        die("Invalid username");
+        $ret_error = "Το ονομα χρηστη πρεπει να μην περιεχει ειδικους χαρακτηρες μονο μικρα, κεφαλαια και αριθμοι επιτρεπονται";
+        return;
     }
 
     if(!isValidPassword($password)) {
-        die("Invalid password");
+        $ret_error = "Ο κωδικός πρέπει να περιέχει τουλάχιστον έναν αριθμό, έναν κεφαλαίο χαρακτήρα, έναν μικρό χαρακτήρα, και να είναι 8 οι περισσότερα γράμματα μεγάλος.";
+        return;
     }
 
     // U have succeed to survive from all these checks!
 
     login($username, $password, $remember_me);
-
-    $login_attempt = true;
 }
 
 function login($username, $password, $remember_me) {
@@ -76,10 +79,16 @@ function login($username, $password, $remember_me) {
     $userid = $row[0];
 
     initialize_user_session($userid);
+
+    if($remember_me === true) {
+        remember_user($userid);
+    }
+
+    header("Location: index.php");
 }
 
 function login_attempt_status() {
-    global $login_attempt, $ret_error, $conn;
+    global $login_attempt, $ret_error;
     if($login_attempt) {
         if(isset($ret_error) && !empty($ret_error)) {
             echo "

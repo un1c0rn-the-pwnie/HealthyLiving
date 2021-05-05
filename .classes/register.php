@@ -13,38 +13,44 @@ $register_attempt = false;
 $ret_error = "";
 
 if(isset($_POST['submit']) && $captcha_status) {
+    $register_attempt = true;
     $username = $_POST['username'];
 
     if(empty($username)) {
-        die("Empty username");
+        $ret_error = "Δεν δόθηκε όνομα χρήστη.";
+        return;
     }
 
     $password = $_POST['password'];
 
     if(empty($password)) {
-        die("Empty password");
+        $ret_error = "Δεν δόθηκε κωδικός.";
+        return;
     }
 
     $email = $_POST['email'];
 
     if(empty($email)) {
-        die("Empty email");
+        $ret_error = "Κένο email.";
+        return;
     }
 
     if(!isValidUsername($username)) {
-        die("Invalid username");
+        $ret_error = "Το ονομα χρηστη πρεπει να μην περιεχει ειδικους χαρακτηρες μονο μικρα, κεφαλαια και αριθμοι επιτρεπονται";
+        return;
     }
 
     if(!isValidPassword($password)) {
-        die("Invalid password");
+        $ret_error = "Ο κωδικός πρέπει να περιέχει τουλάχιστον έναν αριθμό, έναν κεφαλαίο χαρακτήρα, έναν μικρό χαρακτήρα, και να είναι 8 οι περισσότερα γράμματα μεγάλος.";
+        return;
     }
 
     if(!isValidEmail($email)) {
-        die("Invalid email");
+        $ret_error = "Δεν δόθηκε έγκυρη μορφή email.";
+        return;
     }
 
     // U have succeed to survive from all these checks!
-    $register_attempt = true;
 
     $username = safe_sqlparam($username, $conn);
     $password = safe_sqlparam($password, $conn);

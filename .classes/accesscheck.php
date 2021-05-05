@@ -1,12 +1,12 @@
 <?php
 
-if(isset($_SESSION['lgh'])) {
-    $login_hash = $_SESSION['lgh'];
-    if(empty($login_hash)) {
+if(isset($_SESSION['auth'])) {
+    $auth = $_SESSION['auth'];
+    if(empty($auth)) {
         return;
     }
 
-    if (!ctype_xdigit($login_hash)) {
+    if($auth !== true) {
         return;
     }
 

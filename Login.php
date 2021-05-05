@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include '.classes/auth.php';
     include('.classes/accesscheck.php'); // if is already logged in redirect to homepage.
 
     include('.classes/login.php');

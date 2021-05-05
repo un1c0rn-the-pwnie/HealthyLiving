@@ -9,29 +9,56 @@ require_once '.classes/funcs.php';
 
 session_start();
 
-if(isset($_SESSION['lgh'])) {
-    $login_hash = $_SESSION['lgh'];
-    if(empty($login_hash)) {
+if(isset($_SESSION['auth'])) {
+    $auth = $_SESSION['auth'];
+    if(empty($auth)) {
         header("Location: index.php");
     }
 
-    if (!ctype_xdigit($login_hash)) {
+    if ($auth !== true) {
         header("Location: index.php");
     }
 
-    $login_hash = safe_sqlparam($login_hash, $conn);
-    $row = retrieve_user_row_from_login_hash($login_hash);
+    $uid = $_SESSION['uid'];
+    if(empty($uid)) {
+        header("Location: index.php");
+    }
+
+    if (!is_numeric($uid)) {
+        header("Location: index.php");
+    }
+
+    $row = retrieve_user_row_by_id($uid);
     if($row == null) {
         // Not valid login hash get out of here!
         header("Location: index.php");
     }
 
     $userid = $row[0];
-    null_login_hash($userid);
 
-    $_SESSION['lgh'] = '';
+    // in case of remember me.
+    if(isset($_COOKIE['lgh'])) {
+        null_login_hash($userid);
+        $options = array (
+            'expires' => -1, // expired, please browser remove it :)
+            'path' => '/',
+            'domain' => 'localhost',
+            'secure' => false,     // when https enable it!!!
+            'httponly' => true,    // no javascript is allowed to touch this cookie! no XSS
+            'samesite' => 'Strict' // No CSRF is allowed here!
+            // but i hope your browser is not too old :)
+        );
+        setcookie('lgh', '', $options); 
+        unset($_COOKIE['lgh']);
+    }
+
+    $_SESSION['auth'] = false;
+    $_SESSION['uid'] = '';
+
     session_destroy();
 
+    header("Location: index.php");
+} else {
     header("Location: index.php");
 }
 

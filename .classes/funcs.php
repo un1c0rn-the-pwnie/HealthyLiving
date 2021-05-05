@@ -95,17 +95,47 @@ function null_login_hash($userid) {
     return true;
 }
 
-function initialize_user_session($userid) {
+function retrieve_user_row_by_id($uid) {
     global $conn;
 
+    $query = "SELECT * FROM `users` WHERE id = '$uid';";
+
+    $result = mysqli_query($conn, $query);
+    $rows = mysqli_num_rows($result);
+    if($rows == 0) {
+        return null;
+    }
+
+    $row = $result->fetch_row();
+
+    $result->free_result();
+
+    return $row;
+}
+
+function initialize_user_session($userid) {
+    $_SESSION['uid'] = $userid;
+    $_SESSION['auth'] = true;
+}
+
+function remember_user($userid) {
+
     $login_hash = hash('sha512', bin2hex(random_bytes('256')));
+
     if(!update_login_hash($userid, $login_hash)) {
         return;
     }
 
-    $_SESSION['lgh'] = $login_hash;
-
-    header("Location: index.php");
+    $options = array (
+        'expires' => time() + 86400 * 30, // 30 days
+        'path' => '/',
+        'domain' => 'localhost',
+        'secure' => false,     // when https enable it!!!
+        'httponly' => true,    // no javascript is allowed to touch this cookie! no XSS
+        'samesite' => 'Strict' // No CSRF is allowed here!
+        // but i hope your browser is not too old :)
+    );
+    setcookie('lgh', $login_hash, $options); // 1 year
 }
 
 ?>

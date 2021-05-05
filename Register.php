@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include '.classes/auth.php';
     include('.classes/accesscheck.php');
 
     include('.classes/register.php');

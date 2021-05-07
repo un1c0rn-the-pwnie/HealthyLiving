@@ -75,15 +75,30 @@ function register($username, $email, $password) {
     $salt = bin2hex(random_bytes('16'));
     $password = hash('sha512', $salt . $password);
     $register_date = date("Y-m-d H:i:s");
-    $query = "INSERT INTO `users` (username, password, salt, email, rg_date) VALUES ('$username', '$password', '$salt', '$email', '$register_date')";
+    $hash = md5( rand(0,1000) );
+    $query = "INSERT INTO `users` (username, password, salt, email, rg_date, hash) VALUES ('$username', '$password', '$salt', '$email', '$register_date', '$hash')";
 
     $result = mysqli_query($conn, $query);
     if(!$result) {
         $ret_error = "Error 007 please contact with admin";
         return;
     }
+
+    // Verification email start
+    $subject = 'Healthy living Verification';
+    $message = '
     
-    // TODO Verification email
+    Thanks for signing up!
+    Your account has been created, you can activated your account by pressing the url below.
+    
+    Please click this link to activate your account:
+    localhost/verify.php?username='.$username.'&hash='.$hash.'
+    
+    ';
+                        
+    mail($email, $subject, $message, $headers);
+    // Verification email end
+    
     // TODO beautiful prompt
     header("Location: index.php");
 }

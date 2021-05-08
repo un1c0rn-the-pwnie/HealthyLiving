@@ -69,6 +69,24 @@ function retrieve_user_row($username) {
     return $row;
 }
 
+function retrieve_email_row($email) {
+    global $conn;
+
+    $query = "SELECT * FROM `users` WHERE email = '$email';";
+
+    $result = mysqli_query($conn,$query);
+    $rows = mysqli_num_rows($result);
+    if($rows == 0) {
+        return null;
+    }
+
+    $row = $result->fetch_row();
+
+    $result->free_result();
+
+    return $row;
+}
+
 function update_login_hash($userid, $login_hash) {
     global $conn, $ret_error;
 

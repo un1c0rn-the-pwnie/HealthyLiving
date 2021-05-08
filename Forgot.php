@@ -1,6 +1,10 @@
 <?php
     session_start();
     include '.classes/auth.php';
+
+    include '.classes/captcha.php';
+    include '.classes/recovery.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -54,15 +58,18 @@
                 <div class="col-sm">
                 </div>
                 <div class="col-md-6">
-                    <form id="sForm" action="/form.php"
+                    <form id="sForm" action="Forgot.php"
                         class="p-4 my-3 bg-white text-black text-center border needs-validation" novalidate
-                        style="border-radius:12px;">
+                        style="border-radius:12px;" method="post">
                         <div class="form-group">
-                            <input id="email" type="email" class="form-control" placeholder="Εισάγετε το email σας"
+                            <input id="email" name="email" type="email" class="form-control" placeholder="Εισάγετε το email σας"
                                 required>
                             <div class="invalid-feedback">Συμπληρώστε το υποχρεωτικό πεδίο.</div>
                         </div>
-                        <button type="submit" class="btn btn-lg btn-green btn-block">ΑΠΟΣΤΟΛΗ</button><br />
+                        <?php
+                            recovery_attempt_status();
+                        ?>
+                        <button name='submit' type="submit" class="btn btn-lg btn-green btn-block">ΑΠΟΣΤΟΛΗ</button><br />
                     </form>
                 </div>
                 <div class="col-sm">

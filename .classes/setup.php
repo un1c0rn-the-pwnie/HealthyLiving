@@ -2,7 +2,7 @@
 
 include 'config.php';
 
-define('root_pass', ''); // Bale ton kwdkio tou root apo phpmyadmin
+define('root_pass', 'QsXPl,10_+;!'); // Bale ton kwdkio tou root apo phpmyadmin
 define('root_name', 'root'); // bale to onoma tou root apo to phpmyadmin
 
 $link = mysqli_connect(db_db, root_name, root_pass); 
@@ -51,6 +51,19 @@ if(mysqli_query($link, $sql)){
     echo "Table users created succcessfully<br/>";
 } else{
     echo "Could not able to execute $sql. " . mysqli_error($link) . "<br/>";
+}
+
+$sql2 = "CREATE TABLE IF NOT EXISTS `reset` (
+    `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `email` varchar(50) NOT NULL,
+    `code` varchar(32) NOT NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+  COLLATE latin1_general_cs;";
+
+if(mysqli_query($link, $sql2)){
+    echo "Table users created succcessfully<br/>";
+} else{
+    echo "Could not able to execute $sql2. " . mysqli_error($link) . "<br/>";
 }
  
 mysqli_close($link);

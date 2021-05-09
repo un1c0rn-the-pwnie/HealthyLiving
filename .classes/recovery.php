@@ -26,14 +26,23 @@ if(isset($_POST['submit'])){
         return;
     }
 
-    $password = $row[3];
+
+    $code = md5( rand(0,1000) );
+    $query = "INSERT INTO `reset` (email, code) VALUES ('$email', '$code')";
+
+    $result = mysqli_query($conn, $query);
+    if(!$result) {
+        $ret_error = "Error 007 please contact with admin";
+        return;
+    }
 
     $subject = 'Healthy living Password Recovery';
     $message = '
-        
-    Below you can see your password:
 
-    password = '.$password.'
+    You can reset your password by pressing the url below.
+    
+    Please click this link to reset your password:
+    localhost/Reset.php?email='.$email.'&code='.$code.'
         
     ';
     mail($email, $subject, $message);

@@ -75,7 +75,7 @@ function register($username, $email, $password) {
     $salt = bin2hex(random_bytes('16'));
     $password = hash('sha512', $salt . $password);
     $register_date = date("Y-m-d H:i:s");
-    $hash = md5( rand(0,1000) );
+    $hash = bin2hex(random_bytes('16'));
     $query = "INSERT INTO `users` (username, password, salt, email, rg_date, hash) VALUES ('$username', '$password', '$salt', '$email', '$register_date', '$hash')";
 
     $result = mysqli_query($conn, $query);

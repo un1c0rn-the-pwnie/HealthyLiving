@@ -14,6 +14,7 @@
                     <li class='item button'><a href='profile.php'>Προφίλ</a></li>
                     <li class='item button secondary'><a href='logout.php'>Αποσύνδεση</a></li>
                     ";
+                    $_SESSION['$user'] = $user;
                 } else {
                     echo "
                     <li class='item button'><a href='Login.php'>Log In</a></li>

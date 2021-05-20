@@ -61,4 +61,8 @@ if(isset($_SESSION['auth'])) {
     }
 }
 
+
+// session_register('$logged');
+$_SESSION['$logged'] = $logged;
+
 ?>

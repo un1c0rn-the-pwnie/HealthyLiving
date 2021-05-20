@@ -67,11 +67,6 @@
 
 }
 
-
-.wrapper .form .input-group .btn:hover {
-    opacity: 1;
-}
-
 .wrapper .form .input-group input, .wrapper .form .input-group textarea {
     width: 100%;
     height: 100%;

@@ -85,22 +85,21 @@ function register($username, $email, $password) {
     }
 
     // Verification email start
-    $subject = 'Healthy living Verification';
+    $subject = 'Healthy living Επιβεβαίωση';
     $message = '
     
-    Thanks for signing up!
-    Your account has been created, you can activated your account by pressing the url below.
+    Ευχαριστούμε για την εγγραφή σας!
+    Δημιουργήθηκε επιτυχώς ο λογαριασμός σας , μπορείτε να τον ενεργοποιήσετε πατόντας τον παρακάτω σύνδεσμο:
     
-    Please click this link to activate your account:
-    localhost/verify.php?username='.$username.'&hash='.$hash.'
+    http://localhost/verify.php?username='.$username.'&hash='.$hash.'
     
     ';
                         
-    mail($email, $subject, $message, $headers);
+    mail($email, $subject, $message);
     // Verification email end
     
     // TODO beautiful prompt
-    header("Location: index.php");
+    $ret_error = "Δημιουργήθηκε επιτυχώς ο λογαριασμός σας , στάλθηκε ένα email επιβεβαίωσης στο email σας";
 }
 
 function register_attempt_status() {
@@ -110,9 +109,7 @@ function register_attempt_status() {
             echo "<div>
             $ret_error
             </div> ";
-        } else {
-            header("Location: index.php");
-        }
+        } 
     }
 }
 

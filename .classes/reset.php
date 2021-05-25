@@ -14,7 +14,7 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['code']) && !
     $match  = mysqli_num_rows($search);
                 
     if($match > 0){
-        $reset_message =  'You can now reset your password';
+        $reset_message =  'Μπορείς να αλλάξεις τον κωδικό σου';
         $password_error = "";
         if(isset($_POST['submit'])) {
             $password_attempt = true;
@@ -41,16 +41,16 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['code']) && !
             $password = hash('sha512', $salt . $password);
             mysqli_query($conn,"UPDATE `users` SET `password`='".$password."', `salt`='".$salt."' WHERE `email`='".$email."';");
             mysqli_query($conn,"DELETE FROM `reset` WHERE `email`='".$email."';");
-            $reset_message = 'Egine allagi kodikou';
+            $reset_message = 'Έγινε αλλαγή του κωδικού';
             $is_valid_url = false;
         }
     }else{
-        $reset_message = 'The url is invalid.';
+        $reset_message = 'Λανθασμένος σύνδεσμος αλλαγής κωδικού';
         $is_valid_url = false;
     }
 }
 else{
-    $reset_message = 'what are you doing?';
+    die("τί πάς να κάνεις hacker;");
     $is_valid_url = false;
 }
 

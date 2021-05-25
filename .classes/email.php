@@ -6,18 +6,18 @@ $email_error = "";
 if(isset($_POST['submit']) && $captcha_status){
   $email_attempt = true;
   if (empty($_POST["email"])) {
-      die("Email is required");
+      die("Το email απαιτείτε");
       return;
   } else {
       $email = test_input($_POST["email"]);
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-          $email_error = "Invalid email format"; 
+          $email_error = "λάθος μορφή email"; 
           return;
       }
   }
 
   if (empty($_POST["subject"])) {
-      die("subject is required");
+      die("Το θέμα απαιτείτε");
       return;
   } else {
       $subject = test_input($_POST["subject"]);
@@ -25,7 +25,7 @@ if(isset($_POST['submit']) && $captcha_status){
   
   
   if (empty($_POST["comment"])) {
-      die("comment is required");
+      die("Το σχόλιο απαιτείτε");
       return;
   } else {
       $comment = test_input($_POST["comment"]);

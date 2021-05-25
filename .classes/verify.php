@@ -10,13 +10,13 @@ if(isset($_GET['username']) && !empty($_GET['username']) AND isset($_GET['hash']
                 
     if($match > 0){
         mysqli_query($conn,"UPDATE users SET active='1' WHERE username='".$username."' AND hash='".$hash."' AND active='0'");
-        $verify_message = 'Your account has been activated, you can now login';
+        $verify_message = 'Ο λογαριασμός ενεργοποιήθηκε , μπορείτε να συνδεθείτε';
     }else{
-        $verify_message = 'The url is either invalid or you already have activated your account.';
+        $verify_message = 'Ο σύνδεσμος είναι λανθασμένος ή έγινε ενεργοποίηση του λογαριασμού.';
     }
 }
 else{
-    $verify_message = 'what are you doing?';
+    die("τί πάς να κάνεις hacker;");
 }
 
 function verify_attempt_status() {

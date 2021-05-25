@@ -68,7 +68,12 @@ function login($username, $password, $remember_me) {
 
     $retrieved_password = $row[3];
     $salt               = $row[4];
+    $verified           = $row[8];
     
+    if($verified == "0"){
+        $ret_error = "Δέν έχει επιβεβαιωθεί αυτός ο λογαριασμός , παρακαλώ επιβεβαιώστε τον λογαριασμό";
+        return;
+    }
     $password = hash('sha512', $salt . $password);
 
     if(strcmp($password, $retrieved_password) !== 0) {

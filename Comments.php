@@ -42,7 +42,7 @@
     
 </head>
 <body>
-<center>
+	<center>
 		<div class="wrapper">
 			<div class="prev-comments">
 			<?php 

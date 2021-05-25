@@ -9,12 +9,12 @@ $email_error = "";
 if(isset($_POST['submit'])){
     $email_attempt = true;
     if (empty($_POST["email"])) {
-        die("Email is required");
+        die("Το email απαιτείτε");
         return;
     } else {
         $email = test_input($_POST["email"]);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $email_error = "Invalid email format"; 
+            $email_error = "λάθος μορφή email"; 
             return;
         }
     }
@@ -27,7 +27,7 @@ if(isset($_POST['submit'])){
     }
 
 
-    $code = md5( rand(0,1000) );
+    $code  = bin2hex(random_bytes('16'));
     $query = "INSERT INTO `reset` (email, code) VALUES ('$email', '$code')";
 
     $result = mysqli_query($conn, $query);
@@ -36,13 +36,12 @@ if(isset($_POST['submit'])){
         return;
     }
 
-    $subject = 'Healthy living Password Recovery';
+    $subject = 'Healthy living Αλλαγή Κωδικού';
     $message = '
 
-    You can reset your password by pressing the url below.
+    Μπορείτε να αλλάξετε τον κωδικό σας πατόντας τον παρακάτω σύνδεσμο:
     
-    Please click this link to reset your password:
-    localhost/Reset.php?email='.$email.'&code='.$code.'
+    http://localhost/Reset.php?email='.$email.'&code='.$code.'
         
     ';
     mail($email, $subject, $message);

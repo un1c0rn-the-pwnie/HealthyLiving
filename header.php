@@ -11,7 +11,6 @@
                 if(isset($logged) && $logged) {
                     echo "
                     <li class='item button'><a href='#'>Γεία σου $user</a></li>
-                    <li class='item button'><a href='profile.php'>Προφίλ</a></li>
                     <li class='item button secondary'><a href='logout.php'>Αποσύνδεση</a></li>
                     ";
                     $_SESSION['$user'] = $user;

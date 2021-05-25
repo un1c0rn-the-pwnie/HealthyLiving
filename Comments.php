@@ -16,8 +16,8 @@
             $comment = test_input($comment);
             $comment = safe_sqlparam($comment, $conn);
 
-            $sql = "INSERT INTO comments_system (name, comment)
-                    VALUES ('$user', '$comment')";                    // The variabel $user is from header.php 
+            $sql = "INSERT INTO " .$commentdb." (name, comment)
+                    VALUES ('$user', '$comment')";                   // The variabel $user is from header.php 
             $result = mysqli_query($conn, $sql);
         }
         else{
@@ -42,32 +42,33 @@
     
 </head>
 <body>
-	<div class="wrapper">
-	    <div class="prev-comments">
-		<?php 
-		$sql = "SELECT * FROM comments_system";
-		$result = mysqli_query($conn, $sql);
-		if (mysqli_num_rows($result) > 0) {
-		    while ($row = mysqli_fetch_assoc($result)) {
-		    ?>
-		    <div class="single-item">
-			<h4><?php echo $row['name']; ?></h4>
-			<p><?php echo $row['comment']; ?></p>
-		    </div>
-		<?php
-		    }
-		}
+<center>
+		<div class="wrapper">
+			<div class="prev-comments">
+			<?php 
+			$sql = "SELECT * FROM " . $commentdb ;
+			$result = mysqli_query($conn, $sql);
+			if (mysqli_num_rows($result) > 0) {
+				while ($row = mysqli_fetch_assoc($result)) {
+				?>
+				<div class="single-item">
+				<h4><?php echo $row['name']; ?></h4>
+				<p><?php echo $row['comment']; ?></p>
+				</div>
+			<?php
+				}
+			}
+			?>
+			</div>
+			<?php
+			if($logged){
+			include_once '.classes/comment_form.php';
+			}
+			else{
+			echo "Απαιτείται σύνδεση για να αφήσετε σχόλιο";
+			}
 		?>
-	    </div>
-	    <?php
-	    if($logged){
-		include_once '.classes/comment_form.php';
-	    }
-	    else{
-		echo "Απαιτείται σύνδεση για να αφήσετε σχόλιο";
-	    }
-	?>
-	</div>
-
+		</div>
+	</center>
 </body>
 </html>

@@ -155,6 +155,7 @@
     <br>
     
     <?php
+        $commentdb = "comments_calculator";
         include 'Comments.php';
     ?>
     

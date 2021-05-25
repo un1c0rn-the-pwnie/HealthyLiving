@@ -115,6 +115,7 @@
     <br>
 
     <?php
+        $commentdb = "comments_sport";
         include 'Comments.php';
     ?>
 

@@ -122,6 +122,7 @@
     <br>
     
     <?php
+        $commentdb = "comments_diet";
         include 'Comments.php';
     ?>
     

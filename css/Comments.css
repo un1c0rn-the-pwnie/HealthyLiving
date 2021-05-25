@@ -6,9 +6,13 @@
     box-sizing: border-box;
 }
 
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 
-
-.wrapper {  
+.wrapper {
     padding: 20px;
     background: #FFF;
     width: 800px;

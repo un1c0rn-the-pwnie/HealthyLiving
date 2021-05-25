@@ -42,34 +42,32 @@
     
 </head>
 <body>
-    <center>
-        <div class="wrapper">
-            <div class="prev-comments">
-                <?php 
-                $sql = "SELECT * FROM comments_system";
-                $result = mysqli_query($conn, $sql);
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                    ?>
-                    <div class="single-item">
-                        <h4><?php echo $row['name']; ?></h4>
-                        <p><?php echo $row['comment']; ?></p>
-                    </div>
-                <?php
-                    }
-                }
-                ?>
-            </div>
-            <?php
-            if($logged){
-                include_once '.classes/comment_form.php';
-            }
-            else{
-                echo "Απαιτείται σύνδεση για να αφήσετε σχόλιο";
-            }
-        ?>
-        </div>
-    </center>
+	<div class="wrapper">
+	    <div class="prev-comments">
+		<?php 
+		$sql = "SELECT * FROM comments_system";
+		$result = mysqli_query($conn, $sql);
+		if (mysqli_num_rows($result) > 0) {
+		    while ($row = mysqli_fetch_assoc($result)) {
+		    ?>
+		    <div class="single-item">
+			<h4><?php echo $row['name']; ?></h4>
+			<p><?php echo $row['comment']; ?></p>
+		    </div>
+		<?php
+		    }
+		}
+		?>
+	    </div>
+	    <?php
+	    if($logged){
+		include_once '.classes/comment_form.php';
+	    }
+	    else{
+		echo "Απαιτείται σύνδεση για να αφήσετε σχόλιο";
+	    }
+	?>
+	</div>
 
 </body>
 </html>

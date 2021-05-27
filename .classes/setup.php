@@ -53,17 +53,56 @@ if(mysqli_query($link, $sql)){
     echo "Could not able to execute $sql. " . mysqli_error($link) . "<br/>";
 }
 
-$sql2 = "CREATE TABLE IF NOT EXISTS `reset` (
+$sql = "CREATE TABLE IF NOT EXISTS `reset` (
     `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `email` varchar(50) NOT NULL,
     `code` varchar(32) NOT NULL
   ) ENGINE=InnoDB DEFAULT CHARSET=latin1
   COLLATE latin1_general_cs;";
 
-if(mysqli_query($link, $sql2)){
+if(mysqli_query($link, $sql)){
     echo "Table users created succcessfully<br/>";
 } else{
-    echo "Could not able to execute $sql2. " . mysqli_error($link) . "<br/>";
+    echo "Could not able to execute $sql. " . mysqli_error($link) . "<br/>";
+}
+
+$sql = "CREATE TABLE IF NOT EXISTS `comments_diet` (
+    `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name` varchar(255) NOT NULL,
+    `comment` mediumtext NOT NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+  COLLATE latin1_general_cs;";
+
+if(mysqli_query($link, $sql)){
+    echo "Table users created succcessfully<br/>";
+} else{
+    echo "Could not able to execute $sql. " . mysqli_error($link) . "<br/>";
+}
+
+$sql = "CREATE TABLE IF NOT EXISTS `comments_sport` (
+    `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name` varchar(255) NOT NULL,
+    `comment` mediumtext NOT NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+  COLLATE latin1_general_cs;";
+
+if(mysqli_query($link, $sql)){
+    echo "Table users created succcessfully<br/>";
+} else{
+    echo "Could not able to execute $sql. " . mysqli_error($link) . "<br/>";
+}
+
+$sql = "CREATE TABLE IF NOT EXISTS `comments_calculator` (
+    `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name` varchar(255) NOT NULL,
+    `comment` mediumtext NOT NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+  COLLATE latin1_general_cs;";
+
+if(mysqli_query($link, $sql)){
+    echo "Table users created succcessfully<br/>";
+} else{
+    echo "Could not able to execute $sql. " . mysqli_error($link) . "<br/>";
 }
  
 mysqli_close($link);

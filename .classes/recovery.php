@@ -5,9 +5,10 @@ require_once '.classes/funcs.php';
 
 $email_attempt = false;
 $email_error = "";
-
+//Αρχικά ελέγχουμε άμα έχει σταλθεί η φόρμα
 if(isset($_POST['submit'])){
     $email_attempt = true;
+    //Ελέγχουμε άμα κάθε πεδίο έχει υποβληθεί σωστα και περιορίζουμε τον κακόβουλο κώδικα
     if (empty($_POST["email"])) {
         die("Το email απαιτείτε");
         return;
@@ -26,7 +27,7 @@ if(isset($_POST['submit'])){
         return;
     }
 
-
+    //δημιουργούμε έναν μοναδικό κωδικό ανάκτησης για το url της αλλαγής Κωδικού και αποθήκευσέ το σε μία βάση
     $code  = bin2hex(random_bytes('16'));
     $query = "INSERT INTO `reset` (email, code) VALUES ('$email', '$code')";
 
@@ -35,7 +36,7 @@ if(isset($_POST['submit'])){
         $ret_error = "Error 007 please contact with admin";
         return;
     }
-
+    //Στέλνουμε το email με το url
     $subject = 'Healthy living Αλλαγή Κωδικού';
     $message = '
 
@@ -47,12 +48,14 @@ if(isset($_POST['submit'])){
     mail($email, $subject, $message);
 }
 
+//φιλτράρισμα κακόβουλου κώδικα
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
+//Για να δείξουμε στον χρήστη ενημερωτικά μυνήματα για την διαδικασία
 function recovery_attempt_status() {
   global $email_attempt, $email_error;
   if($email_attempt) {

@@ -1,5 +1,5 @@
 <?php
-
+//Χρήσημες συναρτήσεις για έλεγχο των μεταβλητών για την υποβολή φόρμας
 require_once 'defines.php';
 
 function isValidUsername($username)

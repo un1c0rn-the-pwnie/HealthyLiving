@@ -11,9 +11,10 @@ error_reporting(E_ALL);
 
 $register_attempt = false;
 $ret_error = "";
-
+//Αρχικά ελέγχουμε άμα έχει σταλθεί η φόρμα και έχει πατηθεί το captcha
 if(isset($_POST['submit']) && $captcha_status) {
     $register_attempt = true;
+    //Ελέγχουμε άμα κάθε πεδίο έχει υποβληθεί σωστα και περιορίζουμε τον κακόβουλο κώδικα
     $username = $_POST['username'];
 
     if(empty($username)) {
@@ -50,7 +51,6 @@ if(isset($_POST['submit']) && $captcha_status) {
         return;
     }
 
-    // U have succeed to survive from all these checks!
 
     $username = safe_sqlparam($username, $conn);
     $password = safe_sqlparam($password, $conn);
@@ -66,16 +66,19 @@ if(isset($_POST['submit']) && $captcha_status) {
         return;
     }
 
-    register($username, $email, $password); // You're IN!
+    //Άμα όλα είναι σωστά κάνε το register
+    register($username, $email, $password);
 }
 
 function register($username, $email, $password) {
     global $conn, $ret_error;
-
+    //Δημιουργία salt για κρηπτογράφηση του κωδικού
     $salt = bin2hex(random_bytes('16'));
     $password = hash('sha512', $salt . $password);
     $register_date = date("Y-m-d H:i:s");
+    //δημιουργούμε έναν μοναδικό κωδικό επιβεβαίωσης για το url της επιβεβαίωσης
     $hash = bin2hex(random_bytes('16'));
+    //Τα αποθηκέυουμε όλα στην βάση
     $query = "INSERT INTO `users` (username, password, salt, email, rg_date, hash) VALUES ('$username', '$password', '$salt', '$email', '$register_date', '$hash')";
 
     $result = mysqli_query($conn, $query);
@@ -84,7 +87,7 @@ function register($username, $email, $password) {
         return;
     }
 
-    // Verification email start
+    // Στέλνουμε το email με το url της επιβεβαίωσης
     $subject = 'Healthy living Επιβεβαίωση';
     $message = '
     
@@ -96,12 +99,12 @@ function register($username, $email, $password) {
     ';
                         
     mail($email, $subject, $message);
-    // Verification email end
+
     
-    // TODO beautiful prompt
     $ret_error = "Δημιουργήθηκε επιτυχώς ο λογαριασμός σας , στάλθηκε ένα email επιβεβαίωσης στο email σας";
 }
 
+//Για να δείξουμε στον χρήστη ενημερωτικά μυνήματα για την διαδικασία
 function register_attempt_status() {
     global $register_attempt, $ret_error;
     if($register_attempt) {

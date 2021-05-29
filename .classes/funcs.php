@@ -1,5 +1,8 @@
 <?php
 
+//Στο αρχέιο υπάρχουν πολλά functions που βοηθούν στην καλύτερη διαχείριση των δεδομένων της βάσης
+
+//φιλτράρισμα κακόβουλου κώδικα για την βάση
 function safe_sqlparam($param, $conn) {
     $ret = mysqli_real_escape_string($conn, $param);
     $ret = stripslashes($ret);
@@ -87,6 +90,7 @@ function retrieve_email_row($email) {
     return $row;
 }
 
+//Ενημερώνει το login hash δηλαδή το cookie απομνημόνευσης του χρήστη
 function update_login_hash($userid, $login_hash) {
     global $conn, $ret_error;
 
@@ -99,7 +103,7 @@ function update_login_hash($userid, $login_hash) {
 
     return true;
 }
-
+//Αφαιρεί το login hash δηλαδή το cookie απομνημόνευσης του χρήστη
 function null_login_hash($userid) {
     global $conn, $ret_error;
 
@@ -136,6 +140,7 @@ function initialize_user_session($userid) {
     $_SESSION['auth'] = true;
 }
 
+//Δημουργία το login hash δηλαδή το cookie απομνημόνευσης του χρήστη
 function remember_user($userid) {
 
     $login_hash = hash('sha512', bin2hex(random_bytes('256')));

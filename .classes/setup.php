@@ -1,5 +1,5 @@
 <?php
-
+//Αρχείο που σημιουργεί την βάση και τους πίνακες που χρειάζεται το site για να λειτουργήσει
 include 'config.php';
 
 define('root_pass', 'QsXPl,10_+;!'); // Bale ton kwdkio tou root apo phpmyadmin

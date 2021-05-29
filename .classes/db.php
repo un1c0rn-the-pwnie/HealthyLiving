@@ -3,6 +3,7 @@
 require_once 'config.php';
 require_once 'defines.php';
 
+//Επιστρέφει error στην περίπτωση που δεν γίνετια σύνδεση στην βαση
 function returnError($error) {
     if(ShowErrors) {
         if(!empty($error)) {

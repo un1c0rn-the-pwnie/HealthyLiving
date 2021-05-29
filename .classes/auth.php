@@ -8,7 +8,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 $logged = false;
-
+//Ελέγχουμε άμα είναι συνδεδεμένος και το αποθηκεύουμε στο logged, άμα είναι αρχικοποιούμε την μεταβλητη user με το όνομα του.
 if(isset($_SESSION['auth'])) {
     if($_SESSION['auth'] !== true) {
         return;
@@ -32,6 +32,7 @@ if(isset($_SESSION['auth'])) {
     $user = $row[1];
     $logged = true;
 } else {
+    //γίνεται ο έλεχγος για άμα είναι συνδεδεμένος με ένα cookie απομνημόνευσης του χρήστη
     if(isset($_COOKIE['lgh'])) {
         $login_hash = $_COOKIE['lgh'];
     
@@ -40,8 +41,7 @@ if(isset($_SESSION['auth'])) {
         }
 
         if(!ctype_xdigit($login_hash)) {
-            // u little shit what are you trying to doooo??
-            die("fuzzing?");
+            die("τί πάς να κάνεις hacker;");
             return;
         }
 
@@ -62,7 +62,6 @@ if(isset($_SESSION['auth'])) {
 }
 
 
-// session_register('$logged');
 $_SESSION['$logged'] = $logged;
 
 ?>

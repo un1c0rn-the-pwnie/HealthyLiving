@@ -2,9 +2,10 @@
 
 $email_attempt = false;
 $email_error = "";
-
+//Αρχικά ελέγχουμε άμα έχει σταλθεί η φόρμα και έχει πατηθεί το captcha
 if(isset($_POST['submit']) && $captcha_status){
   $email_attempt = true;
+  //Ελέγχουμε άμα κάθε πεδίο έχει υποβληθεί σωστα και περιορίζουμε τον κακόβουλο κώδικα
   if (empty($_POST["email"])) {
       die("Το email απαιτείτε");
       return;
@@ -30,17 +31,22 @@ if(isset($_POST['submit']) && $captcha_status){
   } else {
       $comment = test_input($_POST["comment"]);
   }
+
+  //Άμα όλα είναι σωστά στείλε το email στους διαχειριστές του site
   $ouremail = "healthylivingauth@gmail.com";
   $header = "Sender ".$email;
   mail($ouremail, $subject, $comment, $header);
 }
 
+//φιλτράρισμα κακόβουλου κώδικα
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
+
+//Για να δείξουμε στον χρήστη ενημερωτικά μυνήματα για την διαδικασία
 function email_attempt_status() {
   global $email_attempt, $email_error;
   if($email_attempt) {

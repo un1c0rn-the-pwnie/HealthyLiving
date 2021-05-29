@@ -1,5 +1,5 @@
 <?php 
-
+//Στοιχεία της βάσης
     $server = "localhost";
     $username = "healthy_living_user";
     $password = "QsXPl,10_+;!";

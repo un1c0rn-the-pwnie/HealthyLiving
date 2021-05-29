@@ -59,6 +59,7 @@
         </br>
         <?php
 
+            //Έλεγχος άμα είναι σωστό το url δείξε την φόρμα αλλαγής του κωδικού
             if($is_valid_url === true){
                 include_once '.classes/reset_form.php';
             }

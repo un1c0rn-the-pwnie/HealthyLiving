@@ -1,3 +1,4 @@
+<!--φόρμα για την υποβολή σχολίων-->
 <form action="" method="POST" class="form">
     <div class="input-group textarea">
         <label for="comment">Σχόλια</label>

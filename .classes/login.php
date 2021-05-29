@@ -11,9 +11,10 @@ error_reporting(E_ALL);
 
 $login_attempt = false;
 $ret_error = "";
-
+//Αρχικά ελέγχουμε άμα έχει σταλθεί η φόρμα και έχει πατηθεί το captcha
 if(isset($_POST['submit']) && $captcha_status) {
     $login_attempt = true;
+    //Ελέγχουμε άμα κάθε πεδίο έχει υποβληθεί σωστα και περιορίζουμε τον κακόβουλο κώδικα
     $username = $_POST['username'];
 
     if(empty($username)) {
@@ -32,8 +33,7 @@ if(isset($_POST['submit']) && $captcha_status) {
         if($_POST['remember_me'] == "remember_me") {
             $remember_me = true;
         } else {
-            //hacker alert!!!
-            die("What are you trying to do?! Fuzzing is not allowed here!");
+            die("τί πάς να κάνεις hacker;");
         }
     } else {
         $remember_me = false;
@@ -49,7 +49,7 @@ if(isset($_POST['submit']) && $captcha_status) {
         return;
     }
 
-    // U have succeed to survive from all these checks!
+    //Άμα όλα είναι σωστά κάνε το login
 
     login($username, $password, $remember_me);
 }
@@ -60,7 +60,7 @@ function login($username, $password, $remember_me) {
     $password = safe_sqlparam($password, $conn);
 
     $row = retrieve_user_row($username);
-
+    //Έλεγχος άμα υπάρχει ο χρήστης
     if($row == null) {
         $ret_error = "Λάθος όνομα χρήστη η κωδικός πρόσβασης παρακαλώ προσπαθήστε ξανά.";
         return;
@@ -70,6 +70,7 @@ function login($username, $password, $remember_me) {
     $salt               = $row[4];
     $verified           = $row[8];
     
+    //Έλεγξε άμα ο λογαριασμός έχει ενεργοποιηθεί
     if($verified == "0"){
         $ret_error = "Δέν έχει επιβεβαιωθεί αυτός ο λογαριασμός , παρακαλώ επιβεβαιώστε τον λογαριασμό";
         return;
@@ -85,6 +86,7 @@ function login($username, $password, $remember_me) {
 
     initialize_user_session($userid);
 
+    //Άμα έχει επιλέξει το remember me σημιούργησε το cookie απομνημόνευσης του χρήστη
     if($remember_me === true) {
         remember_user($userid);
     }
@@ -92,6 +94,7 @@ function login($username, $password, $remember_me) {
     header("Location: index.php");
 }
 
+//Για να δείξουμε στον χρήστη ενημερωτικά μυνήματα για την διαδικασία
 function login_attempt_status() {
     global $login_attempt, $ret_error;
     if($login_attempt) {

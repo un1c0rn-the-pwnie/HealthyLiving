@@ -8,7 +8,7 @@ require_once '.classes/db.php';
 require_once '.classes/funcs.php';
 
 session_start();
-
+//Ελέγχει άμα είναι συνδεδεμένος ο χρήστης 
 if(isset($_SESSION['auth'])) {
     $auth = $_SESSION['auth'];
     if(empty($auth)) {
@@ -30,14 +30,15 @@ if(isset($_SESSION['auth'])) {
 
     $row = retrieve_user_row_by_id($uid);
     if($row == null) {
-        // Not valid login hash get out of here!
+        // Λάθος used id
         header("Location: index.php");
     }
 
     $userid = $row[0];
 
-    // in case of remember me.
+    //γίνεται ο έλεχγος για άμα υπάρχει το cookie απομνημόνευσης του χρήστη
     if(isset($_COOKIE['lgh'])) {
+        //Άμα υπάρχει το καταστρέφει
         null_login_hash($userid);
         $options = array (
             'expires' => -1, // expired, please browser remove it :)

@@ -6,24 +6,24 @@
     require_once 'header.php';
 
     error_reporting(0); // For not showing any error
-
-    if (isset($_POST['submit'])) { // Check press or not Post Comment Button
-        // $name = $_POST['name']; // Get Name from form
-        // $email = $_POST['email']; // Get Email from form
+	//Ελέγχουμε άμα έχει σταλθεί η φόρμα
+    if (isset($_POST['submit'])) {
         if($logged == true){
-
-            $comment = $_POST['comment']; // Get Comment from form
+		//Άμα είναι συνδεδεμένος ελέγχουμε άμα κάθε πεδίο έχει υποβληθεί σωστα
+            $comment = $_POST['comment']; 
             $comment = test_input($comment);
             $comment = safe_sqlparam($comment, $conn);
 
+			//το εισάγουμε στην βάση μαζι με το όνομα του που παίρνετε απο το session στο header
             $sql = "INSERT INTO " .$commentdb." (name, comment)
-                    VALUES ('$user', '$comment')";                   // The variabel $user is from header.php 
+                    VALUES ('$user', '$comment')";                   
             $result = mysqli_query($conn, $sql);
         }
         else{
             die("τί πάς να κάνεις hacker;");
         }       
     }
+	//φιλτράρισμα κακόβουλου κώδικα
     function test_input($data) {
         $data = trim($data);
         $data = stripslashes($data);
@@ -42,10 +42,12 @@
     
 </head>
 <body>
+	<!--Εμφάνηση των σχολίων-->
 	<center>
 		<div class="wrapper">
 			<div class="prev-comments">
 			<?php 
+			//Δείχνει κάθε σχόλιο που έχει αποθηκευμένο η βάση της μεταβλητής $commentdb που δίνεται στο αρχείο που καλείται
 			$sql = "SELECT * FROM " . $commentdb ;
 			$result = mysqli_query($conn, $sql);
 			if (mysqli_num_rows($result) > 0) {
@@ -61,6 +63,7 @@
 			?>
 			</div>
 			<?php
+			//Έλεγχος άμα είναι συνδεδεμένος ως χρήστης δείξε την φόρμα υποβολής σχολίου
 			if($logged){
 			include_once '.classes/comment_form.php';
 			}

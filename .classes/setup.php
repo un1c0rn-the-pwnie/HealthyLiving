@@ -70,8 +70,8 @@ $sql = "CREATE TABLE IF NOT EXISTS `comments_diet` (
     `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` varchar(255) NOT NULL,
     `comment` mediumtext NOT NULL
-  ) ENGINE=InnoDB DEFAULT CHARSET=latin1
-  COLLATE latin1_general_cs;";
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+  COLLATE utf8_bin;";
 
 if(mysqli_query($link, $sql)){
     echo "Table users created succcessfully<br/>";
@@ -83,8 +83,8 @@ $sql = "CREATE TABLE IF NOT EXISTS `comments_sport` (
     `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` varchar(255) NOT NULL,
     `comment` mediumtext NOT NULL
-  ) ENGINE=InnoDB DEFAULT CHARSET=latin1
-  COLLATE latin1_general_cs;";
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+  COLLATE utf8_bin;";
 
 if(mysqli_query($link, $sql)){
     echo "Table users created succcessfully<br/>";
@@ -96,8 +96,8 @@ $sql = "CREATE TABLE IF NOT EXISTS `comments_calculator` (
     `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` varchar(255) NOT NULL,
     `comment` mediumtext NOT NULL
-  ) ENGINE=InnoDB DEFAULT CHARSET=latin1
-  COLLATE latin1_general_cs;";
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+  COLLATE utf8_bin;";
 
 if(mysqli_query($link, $sql)){
     echo "Table users created succcessfully<br/>";

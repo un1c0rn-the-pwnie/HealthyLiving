@@ -151,17 +151,6 @@
     ?>
     <!--------------------------------------------- End of Footer ---------------------------------------------->
 
-    <button>CLICK ME PLZ</button>
-
-    <script>
-        $("button").click(function(){
-            $.post(".classes/test.php",
-            { },
-            function(data, status){
-                alert("Data: " + data + "\nStatus: " + status);
-            });
-        }); 
-    </script>
     <script src="JavaScript/HomePage.js"></script>
     <script src="JavaScript/all_pages.js"></script>
 </body>

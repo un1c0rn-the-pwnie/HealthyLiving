@@ -63,8 +63,8 @@
                         class="p-4 my-3 bg-white text-black text-center border needs-validation" novalidate
                         style="border-radius:12px;">
                         <div class="form-group">
-                            <input id="username" type="text" pattern="[a-zA-Z0-9]{1,}" title="Το ονομα χρηστη πρεπει να μην περιεχει ειδικους χαρακτηρες μονο μικρα, κεφαλαια και αριθμοι επιτρεπονται" name="username" class="form-control" placeholder="Όνομα χρήστη" required>
-                            <div class="invalid-feedback">Το όνομα χρήστη πρέπει να μην περιέχει ειδικούς χαρακτήρες μόνο μικρά, κεφαλαία η αριθμούς.</div>
+                            <input id="username" type="text" pattern="[a-zA-Z0-9]{1,20}" title="Το ονομα χρηστη πρεπει να μην περιεχει ειδικους χαρακτηρες μονο μικρα, κεφαλαια και αριθμοι επιτρεπονται" name="username" class="form-control" placeholder="Όνομα χρήστη" required>
+                            <div class="invalid-feedback">Το όνομα χρήστη πρέπει να είναι μέχρι 20 γράμματα ,να περιέχει μόνο λατινικούς χαρακτήρες και να μην περιέχει ειδικούς χαρακτήρες μόνο μικρά, κεφαλαία η αριθμούς.</div>
                         </div>
                         <div class="form-group">
                             <input id="email" type="email" name="email" class="form-control" placeholder="Email" required>

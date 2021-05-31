@@ -60,16 +60,7 @@ function login($username, $password, $remember_me) {
     $username = safe_sqlparam($username, $conn);
     $password = safe_sqlparam($password, $conn);
 
-    //Έλεγξε αν τα στοιχεία που έδωσε ο χρήστης ταιριάζουν με αυτά του διαχειρηστή.
-    if($username === admin_username) {
-        if($password === admin_password) {
-            login_as_admin();
-            header("Location: index.php");
-            return;
-        } else {
-            die("Αποτυχία σύνδεσης ως διαχειρηστής.");
-        }
-    }
+
 
     $row = retrieve_user_row($username);
     //Έλεγχος άμα υπάρχει ο χρήστης
@@ -81,6 +72,7 @@ function login($username, $password, $remember_me) {
     $retrieved_password = $row[3];
     $salt               = $row[4];
     $verified           = $row[8];
+    $isadmin            = $row[9];
     
     //Έλεγξε άμα ο λογαριασμός έχει ενεργοποιηθεί
     if($verified == "0"){
@@ -95,7 +87,10 @@ function login($username, $password, $remember_me) {
     }
 
     $userid = $row[0];
-
+    //Έλεγξε αν ο χρήστης είναι διαχειριστής
+    if($isadmin == "1"){
+        login_as_admin();
+    }
     initialize_user_session($userid);
 
     //Άμα έχει επιλέξει το remember me σημιούργησε το cookie απομνημόνευσης του χρήστη

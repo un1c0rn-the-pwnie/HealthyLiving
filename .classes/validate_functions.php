@@ -4,7 +4,7 @@ require_once 'defines.php';
 
 function isValidUsername($username)
 {
-    if (ctype_alnum($username)) {
+    if (ctype_alnum($username) && strlen($username)<=20) {
         return true;
     }
     return false;

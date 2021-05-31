@@ -43,7 +43,8 @@ $sql = "CREATE TABLE IF NOT EXISTS `users` (
     `login_hash` varchar(255),
     `rg_date` DATE NOT NULL,
     `hash` varchar(32) NOT NULL,
-    `active` INT( 1 ) NOT NULL DEFAULT '0'
+    `active` INT( 1 ) NOT NULL DEFAULT '0',
+    `isadmin` INT( 1 ) NOT NULL DEFAULT '0'
   ) ENGINE=InnoDB DEFAULT CHARSET=latin1
   COLLATE latin1_general_cs;";
 

@@ -8,6 +8,16 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 $logged = false;
+$admin = false;
+
+if(isset($_SESSION['admin']) 
+&& $_SESSION['admin'] === true) {
+    $logged = true;
+    $user = 'admin';
+    $admin = true;
+    return;
+}
+
 //Ελέγχουμε άμα είναι συνδεδεμένος και το αποθηκεύουμε στο logged, άμα είναι αρχικοποιούμε την μεταβλητη user με το όνομα του.
 if(isset($_SESSION['auth'])) {
     if($_SESSION['auth'] !== true) {
@@ -60,8 +70,5 @@ if(isset($_SESSION['auth'])) {
         $logged = true;
     }
 }
-
-
-$_SESSION['$logged'] = $logged;
 
 ?>

@@ -41,16 +41,14 @@ if(isset($_POST['submit']) && $captcha_status) {
         return;
     }
 
-    if(!isValidPassword($password)) {
-        $ret_error = "Ο κωδικός πρέπει να περιέχει τουλάχιστον έναν αριθμό, έναν κεφαλαίο χαρακτήρα, έναν μικρό χαρακτήρα, και να είναι 8 οι περισσότερα γράμματα μεγάλος.";
-        return;
-    }
-
     if(!isValidEmail($email)) {
         $ret_error = "Δεν δόθηκε έγκυρη μορφή email.";
         return;
     }
 
+    if($username === admin_username) {
+        die("Δεν μπορείς να χρησιμοποιεισεις το ονομα admin.");
+    }
 
     $username = safe_sqlparam($username, $conn);
     $password = safe_sqlparam($password, $conn);

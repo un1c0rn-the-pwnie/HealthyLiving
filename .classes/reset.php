@@ -29,11 +29,6 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['code']) && !
                 return;
             }
 
-            if(!isValidPassword($password)) {
-                $password_error = "Ο κωδικός πρέπει να περιέχει τουλάχιστον έναν αριθμό, έναν κεφαλαίο χαρακτήρα, έναν μικρό χαρακτήρα, και να είναι 8 οι περισσότερα γράμματα μεγάλος.";
-                return;
-            }
-
             // Άμα όλα είναι σωστά άλλαξε τον κωδικό και ενημέρωσε τις βάσεις
 
             $password = safe_sqlparam($password, $conn);

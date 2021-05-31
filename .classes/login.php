@@ -4,6 +4,7 @@ require_once 'validate_functions.php';
 require_once 'db.php';
 require_once 'funcs.php';
 require_once 'captcha.php';
+require_once 'config.php';
 
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
@@ -44,20 +45,31 @@ if(isset($_POST['submit']) && $captcha_status) {
         return;
     }
 
-    if(!isValidPassword($password)) {
-        $ret_error = "Ο κωδικός πρέπει να περιέχει τουλάχιστον έναν αριθμό, έναν κεφαλαίο χαρακτήρα, έναν μικρό χαρακτήρα, και να είναι 8 οι περισσότερα γράμματα μεγάλος.";
-        return;
-    }
-
     //Άμα όλα είναι σωστά κάνε το login
 
     login($username, $password, $remember_me);
+}
+
+function login_as_admin() {
+    $_SESSION['auth'] = true;
+    $_SESSION['admin'] = true;
 }
 
 function login($username, $password, $remember_me) {
     global $conn, $ret_error;
     $username = safe_sqlparam($username, $conn);
     $password = safe_sqlparam($password, $conn);
+
+    //Έλεγξε αν τα στοιχεία που έδωσε ο χρήστης ταιριάζουν με αυτά του διαχειρηστή.
+    if($username === admin_username) {
+        if($password === admin_password) {
+            login_as_admin();
+            header("Location: index.php");
+            return;
+        } else {
+            die("Αποτυχία σύνδεσης ως διαχειρηστής.");
+        }
+    }
 
     $row = retrieve_user_row($username);
     //Έλεγχος άμα υπάρχει ο χρήστης

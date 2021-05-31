@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="css/all_pages.css">
   <link rel="stylesheet" href="css/BasicPages.css">
   <link rel="stylesheet" href="css/green-bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/Comments.css">
 </head>
 
 <body>

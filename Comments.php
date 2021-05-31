@@ -32,46 +32,40 @@
       }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<link rel="stylesheet" type="text/css" href="css/Comments.css">
-    
-</head>
-<body>
-	<!--Εμφάνηση των σχολίων-->
-	<center>
-		<div class="wrapper">
-			<div class="prev-comments">
-			<?php 
-			//Δείχνει κάθε σχόλιο που έχει αποθηκευμένο η βάση της μεταβλητής $commentdb που δίνεται στο αρχείο που καλείται
-			$sql = "SELECT * FROM " . $commentdb ;
-			$result = mysqli_query($conn, $sql);
-			if (mysqli_num_rows($result) > 0) {
-				while ($row = mysqli_fetch_assoc($result)) {
-				?>
-				<div class="single-item">
-				<h4><?php echo $row['name']; ?></h4>
-				<p><?php echo $row['comment']; ?></p>
-				</div>
-			<?php
-				}
-			}
+<!--Εμφάνηση των σχολίων-->
+<center>
+	<div class="wrapper">
+		<div class="prev-comments">
+		<?php 
+		//Δείχνει κάθε σχόλιο που έχει αποθηκευμένο η βάση της μεταβλητής $commentdb που δίνεται στο αρχείο που καλείται
+		$sql = "SELECT * FROM " . $commentdb ;
+		$result = mysqli_query($conn, $sql);
+		if (mysqli_num_rows($result) > 0) {
+			while ($row = mysqli_fetch_assoc($result)) {
 			?>
+			<div class="single-item">
+			<?php	
+				if($admin === true) {
+					echo "<a href=\"\" style=\"float:right;\"><i class=\"fas fa-eraser\" style=\"color:red;\"></i></a>";
+				}
+			?>
+			<h4><?php echo $row['name']; ?></h4>
+			<p><?php echo $row['comment']; ?></p>
 			</div>
-			<?php
-			//Έλεγχος άμα είναι συνδεδεμένος ως χρήστης δείξε την φόρμα υποβολής σχολίου
-			if($logged){
-			include_once '.classes/comment_form.php';
+		<?php
 			}
-			else{
-			echo "Απαιτείται σύνδεση για να αφήσετε σχόλιο";
-			}
+		}
 		?>
 		</div>
-	</center>
-</body>
-</html>
+		<?php
+		//Έλεγχος άμα είναι συνδεδεμένος ως χρήστης δείξε την φόρμα υποβολής σχολίου
+		if($logged){
+		include_once '.classes/comment_form.php';
+		}
+		else{
+		echo "Απαιτείται σύνδεση για να αφήσετε σχόλιο";
+		}
+	?>
+	</div>
+</center>
+

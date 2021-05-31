@@ -10,11 +10,6 @@ function isValidUsername($username)
     return false;
 }
 
-function isValidPassword($password)
-{
-    return true;
-}
-
 function isValidEmail($email) {
     if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
         return true;

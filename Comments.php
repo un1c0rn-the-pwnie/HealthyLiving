@@ -32,6 +32,12 @@
       }
 ?>
 
+<?php
+	if($admin === true) {
+		echo '<script src="JavaScript/delete_comments.js"></script>';
+	}
+?>
+
 <!--Εμφάνηση των σχολίων-->
 <center>
 	<div class="wrapper">
@@ -43,10 +49,10 @@
 		if (mysqli_num_rows($result) > 0) {
 			while ($row = mysqli_fetch_assoc($result)) {
 			?>
-			<div class="single-item">
+			<div class="single-item" id="comment_<?php echo $row['id']; ?>">
 			<?php	
 				if($admin === true) {
-					echo "<a href=\"\" style=\"float:right;\"><i class=\"fas fa-eraser\" style=\"color:red;\"></i></a>";
+					echo '<button onclick="deleteComment(\'' . $commentdb . '\', \'' . $row['id'] . '\');" style="padding:0; border: none; background: none; float:right;"><i class="fas fa-eraser" style="color:red;"></i></button>';
 				}
 			?>
 			<h4><?php echo $row['name']; ?></h4>

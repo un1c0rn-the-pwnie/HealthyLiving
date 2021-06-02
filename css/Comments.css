@@ -110,6 +110,7 @@
 .wrapper .prev-comments .single-item p {
     font-size: .9rem;
     color: #111;
+    word-break: break-all;
 }
 
 @media all and (max-width: 960px){

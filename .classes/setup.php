@@ -2,7 +2,7 @@
 //Αρχείο που σημιουργεί την βάση και τους πίνακες που χρειάζεται το site για να λειτουργήσει
 include 'config.php';
 
-define('root_pass', 'QsXPl,10_+;!'); // Bale ton kwdkio tou root apo phpmyadmin
+define('root_pass', ''); // Βάλε τον κωδικό του root απο το phpmyadmin
 define('root_name', 'root'); // bale to onoma tou root apo to phpmyadmin
 
 $link = mysqli_connect(db_db, root_name, root_pass); 

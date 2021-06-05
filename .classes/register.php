@@ -46,10 +46,6 @@ if(isset($_POST['submit']) && $captcha_status) {
         return;
     }
 
-    if($username === admin_username) {
-        die("Δεν μπορείς να χρησιμοποιεισεις το ονομα admin.");
-    }
-
     $username = safe_sqlparam($username, $conn);
     $password = safe_sqlparam($password, $conn);
     $email    = safe_sqlparam($email, $conn);

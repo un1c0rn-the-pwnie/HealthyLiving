@@ -32,8 +32,6 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['code']) && !
             // Άμα όλα είναι σωστά άλλαξε τον κωδικό και ενημέρωσε τις βάσεις
 
             $password = safe_sqlparam($password, $conn);
-            $email = $_GET['email'];
-
 
             $salt = bin2hex(random_bytes('16'));
             $password = hash('sha512', $salt . $password);

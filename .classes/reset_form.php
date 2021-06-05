@@ -4,7 +4,7 @@
         <div class="col-sm">
         </div>
         <div class="col-md-6">
-            <form id="resetForm" action="Reset.php?email=<?php echo $_GET['email']?>&code=<?php echo $_GET['code']?>"
+            <form id="resetForm" action="Reset.php?email=<?php echo urlencode($_GET['email']); ?>&code=<?php echo urlencode($_GET['code']);?>"
                 class="p-4 my-3 bg-white text-black text-center border needs-validation" novalidate
                 style="border-radius:12px;" method="post">
                 <div class="form-group">

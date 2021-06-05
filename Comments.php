@@ -1,6 +1,5 @@
 <?php 
-    include '.classes/configComments.php';
-
+	require_once '.classes/db.php';
     require_once '.classes/funcs.php';
     require_once '.classes/auth.php';
     require_once 'header.php';
@@ -64,14 +63,14 @@
 		?>
 		</div>
 		<?php
-		//Έλεγχος άμα είναι συνδεδεμένος ως χρήστης δείξε την φόρμα υποβολής σχολίου
-		if($logged){
-		include_once '.classes/comment_form.php';
-		}
-		else{
-		echo "Απαιτείται σύνδεση για να αφήσετε σχόλιο";
-		}
-	?>
+			//Έλεγχος άμα είναι συνδεδεμένος ως χρήστης δείξε την φόρμα υποβολής σχολίου
+			if($logged){
+				include_once '.classes/comment_form.php';
+			}
+			else{
+				echo "Απαιτείται σύνδεση για να αφήσετε σχόλιο";
+			}
+		?>
 	</div>
 </center>
 

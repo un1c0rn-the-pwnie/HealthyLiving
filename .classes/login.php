@@ -60,8 +60,6 @@ function login($username, $password, $remember_me) {
     $username = safe_sqlparam($username, $conn);
     $password = safe_sqlparam($password, $conn);
 
-
-
     $row = retrieve_user_row($username);
     //Έλεγχος άμα υπάρχει ο χρήστης
     if($row == null) {

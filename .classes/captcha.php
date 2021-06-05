@@ -10,7 +10,7 @@ if(isset($_POST['g-recaptcha-response'])) {
     } else {
         //άμα πατήθηκε έλεγξε με το api της google άμα δεν είναι μποτάκι
         $secret_key = '6LfZoMUaAAAAAJ5Jk8cHicIcg0UNm9pUS90uFwF9';
-        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $_POST['g-recaptcha-response']);
+        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . urlencode($_POST['g-recaptcha-response']));
         $responseData = json_decode($verifyResponse);
         if (!$responseData->success) {
             $captcha_error = "Το reCapthca απέτυχε";

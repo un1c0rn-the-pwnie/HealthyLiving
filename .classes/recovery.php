@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
 
     $result = mysqli_query($conn, $query);
     if(!$result) {
-        $ret_error = "Error 007 please contact with admin";
+        $email_error = "Error 007 please contact with admin";
         return;
     }
     //Στέλνουμε το email με το url
@@ -46,6 +46,7 @@ if(isset($_POST['submit'])){
         
     ';
     mail($email, $subject, $message);
+    $email_error = 'Σας στάλθηκε κωδικός επαναφοράς στην διεύθυνση που δηλώσατε.';
 }
 
 //φιλτράρισμα κακόβουλου κώδικα

@@ -1,2 +1,2 @@
 # HealthyLiving
-Learn how to be healthy and die 100 years old. (Accidents don't count)
+A project for an Undergraduate CS class about web development. We needed to make a website based on one of the sustainability goals of the UN. We decided to develop a dynamic website to inform people and help them achieve good health and well-being. The technologies used are HTML/CSS/JS/PHP/MySQL. Our motto is "Learn how to be healthy and live to 100 years old. (Accidents don't count)"
